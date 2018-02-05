@@ -1,0 +1,1224 @@
+<html>
+<head>
+	<title>Egwald Mathematics &mdash; Nonlinear Dynamics: The Logistic Map and Chaos</title>
+	
+<META name="description" content="The Dynamics of Nonlinear Difference Equations: The Logistic Map and Chaos">
+<META name="keywords" content="logistic map, chaos, difference equations, nonlinear, dynamics, bifurcations, one dimensional flows, stability, saddle point, saddle-node bifurcation, transcritical bifurcation, pitchfork bifurcation, flip bifurcations, period doubling bifurcations, multipliers, eigenvalues, mathematics, Elmer Wiens"> 
+
+<!--by Elmer Wiens, June 22, 2006
+      Egwald Web Services 1-604-263-3499 egwiens@egwald.com 
+--> 
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Begin
+function Start(page) {
+OpenWin = this.open(page, "CtrlWindow", "toolbar=no,menubar=no,location=yes,scrollbars=yes,resizable=yes,'top=100,left=15,width=500,height=600'");
+}
+// End -->
+</SCRIPT>
+<link rel="stylesheet" type="text/css" href="../css/egwald.css">	
+
+
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+// --------------------------------------------------------------
+if (document.images) {
+butonhome = new Image
+butoffhome = new Image
+butonhome.src = "http://www.egwald.ca/nonlineardynamics/images/buttons/egwaldhome_2.png"
+butoffhome.src = "http://www.egwald.ca/nonlineardynamics/images/buttons/egwaldhome_1.png"
+butonmathhome = new Image
+butoffmathhome = new Image
+butonmathhome.src = "http://www.egwald.ca/nonlineardynamics/images/buttons/mathematics_2.png"
+butoffmathhome.src = "http://www.egwald.ca/nonlineardynamics/images/buttons/mathematics_1.png"
+butonnonlindiffhome = new Image
+butoffnonlindiffhome = new Image
+butonnonlindiffhome.src = "http://www.egwald.ca/nonlineardynamics/images/buttons/nonlineardynamics_2.png"
+butoffnonlindiffhome.src = "http://www.egwald.ca/nonlineardynamics/images/buttons/nonlineardynamics_1.png"
+butononedynamics = new Image
+butoffonedynamics = new Image
+butononedynamics.src = "http://www.egwald.ca/nonlineardynamics/images/buttons/onedcontinuoustime_2.png"
+butoffonedynamics.src = "http://www.egwald.ca/nonlineardynamics/images/buttons/onedcontinuoustime_1.png"
+butononediscrete = new Image
+butoffonediscrete = new Image
+butononediscrete.src = "http://www.egwald.ca/nonlineardynamics/images/buttons/oneddiscretetime_2.png"
+butoffonediscrete.src = "http://www.egwald.ca/nonlineardynamics/images/buttons/oneddiscretetime_1.png"
+butonlogistics = new Image
+butofflogistics = new Image
+butonlogistics.src = "http://www.egwald.ca/nonlineardynamics/images/buttons/logisticmapchaos_2.png"
+butofflogistics.src = "http://www.egwald.ca/nonlineardynamics/images/buttons/logisticmapchaos_1.png"
+butonhaavelmo = new Image
+butoffhaavelmo = new Image
+butonhaavelmo.src = "http://www.egwald.ca/nonlineardynamics/images/buttons/haavelmogrowth_2.png"
+butoffhaavelmo.src = "http://www.egwald.ca/nonlineardynamics/images/buttons/haavelmogrowth_1.png"
+butonsyseqnonlindiffhome = new Image
+butoffsyseqnonlindiffhome = new Image
+butonsyseqnonlindiffhome.src = "http://www.egwald.ca/nonlineardynamics/images/buttons/nonlinearsystemdynamics_2.png"
+butoffsyseqnonlindiffhome.src = "http://www.egwald.ca/nonlineardynamics/images/buttons/nonlinearsystemdynamics_1.png"
+butonlinks = new Image
+butofflinks = new Image
+butonlinks.src = "http://www.egwald.ca/nonlineardynamics/images/buttons/references_2.png"
+butofflinks.src = "http://www.egwald.ca/nonlineardynamics/images/buttons/references_1.png"
+} else {
+butonhome = ""
+butoffhome = ""
+document.home = ""
+document.homeleft = ""
+butonmathhome = ""
+butoffmathhome = ""
+document.mathhome = ""
+document.mathhomeleft = ""
+butonnonlindiffhome = ""
+butoffnonlindiffhome = ""
+document.nonlindiffhome = ""
+document.nonlindiffhomeleft = ""
+butononedynamics = ""
+butoffonedynamics = ""
+document.onedynamics = ""
+document.onedynamicsleft = ""
+butononediscrete = ""
+butoffonediscrete = ""
+document.onediscrete = ""
+document.onediscreteleft = ""
+butonlogistics = ""
+butofflogistics = ""
+document.logistics = ""
+document.logisticsleft = ""
+butonhaavelmo = ""
+butoffhaavelmo = ""
+document.haavelmo = ""
+document.haavelmoleft = ""
+butonsyseqnonlindiffhome = ""
+butoffsyseqnonlindiffhome = ""
+document.syseqnonlindiffhome = ""
+document.syseqnonlindiffhomeleft = ""
+butonlinks = ""
+butofflinks = ""
+document.links = ""
+document.linksleft = ""
+
+}
+// --------------------------------------------------------------
+
+//-->	
+
+</SCRIPT>
+
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+// --------------------------------------------------------------
+if (document.images) {
+butonbanstatistics = new Image
+butoffbanstatistics = new Image
+butonbanstatistics.src = "http://www.egwald.ca/images/stat_1.png"
+butoffbanstatistics.src = "http://www.egwald.ca/images/stat_2.png"
+butonbaneconomics = new Image
+butoffbaneconomics = new Image
+butonbaneconomics.src = "http://www.egwald.ca/images/econ_1.png"
+butoffbaneconomics.src = "http://www.egwald.ca/images/econ_2.png"
+butonbanopresearch = new Image
+butoffbanopresearch = new Image
+butonbanopresearch.src = "http://www.egwald.ca/images/opres_1.png"
+butoffbanopresearch.src = "http://www.egwald.ca/images/opres_2.png"
+butonbanmathematics = new Image
+butoffbanmathematics = new Image
+butonbanmathematics.src = "http://www.egwald.ca/images/math_1.png"
+butoffbanmathematics.src = "http://www.egwald.ca/images/math_2.png"
+butonbancontrol = new Image
+butoffbancontrol = new Image
+butonbancontrol.src = "http://www.egwald.ca/images/opcont_1.png"
+butoffbancontrol.src = "http://www.egwald.ca/images/opcont_2.png"
+butonbanegwaldcliche = new Image
+butoffbanegwaldcliche = new Image
+butonbanegwaldcliche.src = "http://www.egwald.ca/images/egwaldcliche_2.png"
+butoffbanegwaldcliche.src = "http://www.egwald.ca/images/egwaldcliche_1.png"
+butonbanegwaldsitesearch = new Image
+butoffbanegwaldsitesearch = new Image
+butonbanegwaldsitesearch.src = "http://www.egwald.ca/images/search_2.png"
+butoffbanegwaldsitesearch.src = "http://www.egwald.ca/images/search_1.png"
+} else {
+butonbanstatistics = ""
+butoffbanstatistics = ""
+document.banstatistics = ""
+document.banstatisticsleft = ""
+butonbaneconomics = ""
+butoffbaneconomics = ""
+document.baneconomics = ""
+document.baneconomicsleft = ""
+butonbanopresearch = ""
+butoffbanopresearch = ""
+document.banopresearch = ""
+document.banopresearchleft = ""
+butonbanmathematics = ""
+butoffbanmathematics = ""
+document.banmathematics = ""
+document.banmathematicsleft = ""
+butonbancontrol = ""
+butoffbancontrol = ""
+document.bancontrol = ""
+document.bancontrolleft = ""
+butonbanegwaldcliche = ""
+butoffbanegwaldcliche = ""
+document.banegwaldcliche = ""
+document.banegwaldclicheleft = ""
+butonbanegwaldsitesearch = ""
+butoffbanegwaldsitesearch = ""
+document.banegwaldsitesearch = ""
+document.banegwaldsitesearchleft = ""
+}
+// --------------------------------------------------------------
+//-->	
+</SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Original:  Craig Lumley -->
+<!-- Web Site:  http://www.ws4all.co.uk -->
+<!-- This script and many more are available free online at -->
+<!-- The JavaScript Source!! http://javascript.internet.com -->
+<!-- Begin
+function MakeArrayday(size) {
+this.length = size;
+for(var i = 1; i <= size; i++) {
+this[i] = "";
+}
+return this;
+}
+function MakeArraymonth(size) {
+this.length = size;
+for(var i = 1; i <= size; i++) {
+this[i] = "";
+}
+return this;
+}
+function funClock() {
+if (!document.layers && !document.all)
+return;
+var runTime = new Date();
+var hours = runTime.getHours();
+var minutes = runTime.getMinutes();
+var seconds = runTime.getSeconds();
+var dn = "AM";
+if (hours >= 12) {
+dn = "PM";
+hours = hours - 12;
+}
+if (hours == 0) {
+hours = 12;
+}
+if (minutes <= 9) {
+minutes = "0" + minutes;
+}
+if (seconds <= 9) {
+seconds = "0" + seconds;
+}
+movingtime = "<b>"+ hours + ":" + minutes + ":" + seconds + " " + dn + "</b>";
+if (document.layers) {
+document.layers.clock.document.write(movingtime);
+document.layers.clock.document.close();
+}
+else if (document.all) {
+clock.innerHTML = movingtime;
+}
+setTimeout("funClock()", 1000)
+}
+window.onload = funClock;
+//  End -->
+</script>
+
+</head>
+
+<body style="background-color: #efefce; margin-left: 5;">
+
+<table valign="top" width="100%" height="70"  border="0" cellspacing="0" cellpadding="0" class="bgc1"><tr>
+<td align="center" valign="middle">
+<a href="http://www.egwald.ca"><img src="http://www.egwald.ca/images/egwald.png"  alt="www.egwald.com Egwald Web Services Ltd." border="0"></a>
+</td>
+<td align="right" nowrap>
+<p class="tab" align="center">
+<a style="color: #ffff00;" href="http://www.egwald.ca/">Egwald Web Services</a><br><a style="color: #ffff00;" href="http://www.egwald.ca/index.php#ca_domain">Domain Names</a> <br><a style="color: #ffff00;" href="http://www.egwald.ca/index.php#web_site">Web Site Design</a>
+</p>
+</TD>
+</tr></table>
+
+<table bgcolor="#ffff00" border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr><td bgcolor="#ffff00" width="65%" nowrap>
+<A href="http://www.egwald.ca/search/index.php?searchtext=nonlinear-dynamics" onMouseover="document.banegwaldsitesearch.src=butonbanegwaldsitesearch.src" onMouseout="document.banegwaldsitesearch.src=butoffbanegwaldsitesearch.src"><img src="http://www.egwald.ca/images/search_1.png" name="banegwaldsitesearch" border="0" alt="Egwald Website Search"></A>
+</td>
+<td class="bgc2" align="right" width="35%" nowrap>
+<p align="center" class="tab"><FONT FACE="Arial, Helvetica, sans-serif" SIZE="-2" color="#000066"> <span id=clock style="position:relative;"></span></font> &nbsp; 
+<FONT FACE="Arial, Helvetica, sans-serif" SIZE="-1" color="#000066"><B>
+<SCRIPT LANGUAGE="JavaScript">
+<!-- hide from old browsers
+// get date object
+var today = new Date(); 
+var days = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
+var months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+// write the date 
+document.write(days[today.getDay()]);
+document.write(' ' + months[today.getMonth()] + ' ' + today.getDate() + ', ' + today.getYear());
+// done hiding -->
+</SCRIPT> 
+</B></FONT>
+</p>
+</td></tr>
+
+</table>
+<table valign="top" width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffff00"">
+<tr>
+<td width ="20%" valign="top" align="center" bgcolor="#ffff00">
+<A HREF="http://www.egwald.ca/statistics/index.php" onMouseover="document.banstatistics.src=butonbanstatistics.src" onMouseout="document.banstatistics.src=butoffbanstatistics.src"><img src="http://www.egwald.ca/images/stat_2.png" height="40"  width="120" name="banstatistics" border="0" alt="Statistics Programs - Econometrics and Probability"></A>
+</td>
+<td width ="20%" valign="top" align="center" bgcolor="#ffff00">
+<A HREF="http://www.egwald.ca/economics/index.php" onMouseover="document.baneconomics.src=butonbaneconomics.src" onMouseout="document.baneconomics.src=butoffbaneconomics.src"> 
+<img src="http://www.egwald.ca/images/econ_2.png" height="40"  width="120" name="baneconomics" border="0" alt="Economics - Microeconomics & Macroeconomics"></A>
+</td>
+<td width ="20%" valign="top" align="center" bgcolor="#ffff00"> 
+<A HREF="http://www.egwald.ca/operationsresearch/index.php" onMouseover="document.banopresearch.src=butonbanopresearch.src" onMouseout="document.banopresearch.src=butoffbanopresearch.src"> 
+<img src="http://www.egwald.ca/images/opres_2.png" height="40"  width="120" name="banopresearch" border="0" alt="Operations Research - Linear Programming and Game Theory"></A>
+</td>
+<td width ="20%" valign="top" align="center" bgcolor="#ffff00"> 
+<A HREF="http://www.egwald.ca/mathematics/index.php" onMouseover="document.banmathematics.src=butonbanmathematics.src" onMouseout="document.banmathematics.src=butoffbanmathematics.src"> 
+<img src="http://www.egwald.ca/images/math_2.png" height="40"  width="120" name="banmathematics" border="0" alt="Egwald's Mathematics"></A>
+</td>
+<td width ="20%" valign="top" align="center" bgcolor="#ffff00"> 
+<A HREF="http://www.egwald.ca/optimalcontrol/index.php" onMouseover="document.bancontrol.src=butonbancontrol.src" onMouseout="document.bancontrol.src=butoffbancontrol.src"> 
+<img src="http://www.egwald.ca/images/opcont_2.png" height="40"  width="120" name="bancontrol" border="0" alt="Egwald's Optimal Control"></A>
+</td>
+</tr>
+
+</table>
+<table align="center" width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr><td>
+<img src="http://www.egwald.ca/nonlineardynamics/images/buttons/buttons-arrow.png" border="0"><A HREF="http://www.egwald.ca/" onMouseover="document.home.src=butonhome.src" onMouseout="document.home.src=butoffhome.src"><img name="home" src="http://www.egwald.ca/nonlineardynamics/images/buttons/egwaldhome_1.png" border="0" align="top" alt="Egwald Home"></A><A HREF="http://www.egwald.ca/mathematics" onMouseover="document.mathhome.src=butonmathhome.src" onMouseout="document.mathhome.src=butoffmathhome.src"><img name="mathhome" src="http://www.egwald.ca/nonlineardynamics/images/buttons/mathematics_1.png" border="0" align="top" alt="Mathematics Home"></A><A HREF="http://www.egwald.ca/nonlineardynamics/index.php" onMouseover="document.nonlindiffhome.src=butonnonlindiffhome.src" onMouseout="document.nonlindiffhome.src=butoffnonlindiffhome.src"><img name="nonlindiffhome" src="http://www.egwald.ca/nonlineardynamics/images/buttons/nonlineardynamics_1.png" border="0" align="top" alt="Nonlinear Dynamics Home"></A><A HREF="http://www.egwald.ca/nonlineardynamics/onedimensionaldynamics.php" onMouseover="document.onedynamics.src=butononedynamics.src" onMouseout="document.onedynamics.src=butoffonedynamics.src"><img name="onedynamics" src="http://www.egwald.ca/nonlineardynamics/images/buttons/onedcontinuoustime_1.png" border="0" align="top" alt="1-D Continuous Time"></A><A HREF="http://www.egwald.ca/nonlineardynamics/onedimensionaldynamics_1.php" onMouseover="document.onediscrete.src=butononediscrete.src" onMouseout="document.onediscrete.src=butoffonediscrete.src"><img name="onediscrete" src="http://www.egwald.ca/nonlineardynamics/images/buttons/oneddiscretetime_1.png" border="0" align="top" alt="1-D Discrete Time"></A><A HREF="http://www.egwald.ca/nonlineardynamics/logisticsmapchaos.php" onMouseover="document.logistics.src=butonlogistics.src" onMouseout="document.logistics.src=butofflogistics.src"><img name="logistics" src="http://www.egwald.ca/nonlineardynamics/images/buttons/logisticmapchaos_1.png" border="0" align="top" alt="Logistics Map Chaos"></A><A HREF="http://www.egwald.ca/nonlineardynamics/haavelmogrowth.php" onMouseover="document.haavelmo.src=butonhaavelmo.src" onMouseout="document.haavelmo.src=butoffhaavelmo.src"><img name="haavelmo" src="http://www.egwald.ca/nonlineardynamics/images/buttons/haavelmogrowth_1.png" border="0" align="top" alt="Haavelmo Growth Model"></A><A HREF="http://www.egwald.ca/nonlineardynamics/systemequationsindex.php" onMouseover="document.syseqnonlindiffhome.src=butonsyseqnonlindiffhome.src" onMouseout="document.syseqnonlindiffhome.src=butoffsyseqnonlindiffhome.src"><img name="syseqnonlindiffhome" src="http://www.egwald.ca/nonlineardynamics/images/buttons/nonlinearsystemdynamics_1.png" border="0" align="top" alt="Nonlinear Systems Dynamics Home"></A><A HREF="http://www.egwald.ca/nonlineardynamics/nonlineardynamicslinks.php" onMouseover="document.links.src=butonlinks.src" onMouseout="document.links.src=butofflinks.src"><img name="links" src="http://www.egwald.ca/nonlineardynamics/images/buttons/references_1.png" border="0" align="top" alt="References & Links"></A>
+</td></tr></table>
+<table class="tab" align="center" cellpadding="5" width="100%">
+<tr><td width="5%" bgcolor="#00ccff">&nbsp;</td><td>
+<p class="title">Egwald Mathematics: Nonlinear Dynamics: <br><br>The Logistic Map and Chaos <br><br>by  <br><br>Elmer G. Wiens </p>
+
+<p align="center" class="tab">
+<a href="#introduction">introduction</a> | <a href="#logisticsmap">logistic map</a>  | <a href="#fixedpoints">fixed points</a> | <a href="#stabilityanalysis">linearized stability analysis</a> | <a href="#bifurcationanalysis">bifurcation analysis</a> <br> <a href="#transcriticalbifurcation">transcritical bifurcation</a> | <a href="#flipbifurcation">period doubling bifurcation</a> | <a href="#secondordermap">second order map</a> | <a href="#f2flipbifurcation">second order bifurcation</a> | <a href="#fourthordermap">fourth order map</a> <br> <a href="#perioddoublingcascade">period doubling cascade</a> | <a href="#logisticmapbifurcationdiagram">logistic bifurcation diagram</a> | <a href="#thirdordermap">third order map</a> | <a href="#f3saddlenodebifurcation">f<sup>3</sup> saddlenode bifurcation</a> <br> <a href="#f3flipbifurcation">f<sup>3</sup> flip bifurcations</a> | <a href="#f3perioddoublingcascade">f<sup>3</sup> period doubling cascade</a> | <a href="javascript:Start('logisticmapdiagrams.php')">interactive logistic map diagrams</a> | <a href="#chaosdefinition">definitions of chaos</a> | <a href="#references">references</a>
+</p>
+
+
+
+<a name="introduction"></a>
+
+<p class="btab" align="center"><font color="#0000ff">
+The Logistic Map and Chaos: Introduction</font>
+</p>
+<p class="btab">
+Introduction
+</p>
+<p>One can use the <b>one-dimensional, quadratic, logistic map</b> to demonstrate complex, dynamic phenomena that also occur in chaos theory and higher dimensional discrete time systems.  </p>
+<a name="logisticsmap"></a>
+<p class="btab">The Logistic Map</p>
+<p>The logistic interative map with parameter r is:</p>
+<p align="center" class="btab">
+x<sub>t+1</sub> = f(x<sub>t</sub>, r) = r * x<sub>t</sub> * (1 + x<sub>t</sub>), &nbsp; x<sub>0</sub> = x0 >= 0.&nbsp; &nbsp; &nbsp; &nbsp; (1)
+</p>
+<p>For r values in excess of 3.57, the <b>orbits x(t, x0) = {x0,  x<sub>1</sub>, x<sub>2</sub>, ... }</b> depend crucially on the initial condition x0.  Slight variations in x0 result in dramatically different orbits, an important characteristic of chaos.</p>
+
+
+<br>
+<hr color="#ffff00" width="50%" align="center">
+<br>
+<a name="fixedpoints"></a>
+<p class="btab">Fixed Points</p>
+<p>
+Fixed points of <b>f</b> satisfy:  
+</p>
+<p class="btab" align="center">
+f(x, r) = r * x * (1 - x) = x. &nbsp; &nbsp; &nbsp; &nbsp; (2)
+</p>
+<p>Thus the fixed points of <b>f</b> are the roots of the quadratic equation:</p>
+<p align="center" class="btab">
+r * x <sup>2</sup> - (r - 1) * x = x * (r * x - (r - 1)) = 0, &nbsp; &nbsp; &nbsp; &nbsp; (3)
+</p>
+<p>which are:</p>
+<p align="center" class="btab">
+x<sub>1</sub> = 0,  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br><br>
+x<sub>2</sub> = (r - 1) / r. &nbsp; &nbsp; &nbsp; &nbsp; (4)
+
+</p>
+<p>The fixed point x<sub>2</sub> is non-negative if r >= 1.</p>
+<br>
+<hr color="#ffff00" width="50%" align="center">
+<br>
+<a name="stabilityanalysis"></a>
+<p class="btab">Linearized Stability Analysis</p>
+<p>One can analyze the local stability of the difference equation (1) by examining the partial derivative of f with respect to x evaluated at each fixed point x<sup>*</sup>:</p>
+<p align="center" class="btab">
+&lambda; = f<sub>x</sub>(x<sup>*</sup>, r) = r * (1 - 2 * x<sup>*</sup>). &nbsp; &nbsp; &nbsp; &nbsp; (5) 
+</p>
+<p>where &lambda; is called the <b>multiplier or eigenvalue</b>. Substituting x<sub>1</sub> and x<sub>2</sub> into (5) yields:
+</p>
+<p align="center" class="btab">
+&lambda;<sub>1</sub> = r * (1 - 2 * x<sub>1</sub>) = r,   <br><br>
+&lambda;<sub>2</sub> = r * (1 - 2 * x<sub>2</sub>) = r * (1 - 2 * (r - 1) / r)) = 2 - r.
+</p>
+<p class="btab">If r > 1 &rarr; &lambda;<sub>1</sub> > 1 &rarr; x<sub>1</sub> = 0 is unstable (repeller); &nbsp;
+if 1 < r < 3 &rarr;  1 > &lambda;<sub>2</sub> > -1 &rarr; x<sub>2</sub> = (r - 1) / r is stable (attractor). </p>
+
+<br>
+<hr color="#ffff00" width="50%" align="center">
+<br>
+<a name="bifurcationanalysis"></a>
+<p class="btab">Bifurcation Analysis</p>
+<p>When a change in a parameter results in a qualitative change in the dynamics of a nonlinear process, the process is said to have gone through a <a href="http://www.egwald.ca/nonlineardynamics/onedimensionaldynamics.php#bifurcations" target="Bifurcation">bifurcation</a>.</p>
+<p class="btab">
+When r = 1 &rarr;  &lambda;<sub>1</sub> = &lambda;<sub>2</sub> = 1 & x<sub>1</sub> = x<sub>2</sub> = 0 &rarr; (x<sup>*</sup>, r<sub>c</sub>) = (0 , 1) is a non-hyperbolic fixed point. In fact, it is a transcritical bifurcation point of the mapping <b>f</b>.</p>
+
+
+<p class="btab">Check the <a href="http://www.egwald.ca/nonlineardynamics/onedimensionaldynamics_1.php#transcriticalbifurcation" target="Transcritical Bifurcation">transcritical bifurcation</a> conditions at (x<sup>*</sup>, r<sub>c</sub>) = (0, 1)</p>
+
+<table align="center"><tr><td>
+<p class="btab">
+(TC1) &nbsp; f(0, r<sub>c</sub>) = 0 for all r<br><br>
+(TC2) &nbsp; f<sub>x</sub>(0, r<sub>c</sub>) = &lambda; = 1 &nbsp; &rarr; &nbsp; (0, r<sub>c</sub>) is non-hyperbolic<br><br>
+(TC3) &nbsp; f<sub>x,r</sub>(x, r) = 1 - 2 * x &rarr; a = f<sub>x,r</sub>(0, r<sub>c</sub>) = 1 &ne; 0<br><br>
+(TC4) &nbsp; f<sub>x,x</sub>(x, r) = -2 * r &rarr; b = (1/2) * f<sub>x,x</sub>(0, r<sub>c</sub>) = -2 &ne; 0
+</p>
+</td><td><p class="btab">&nbsp; &nbsp;(6) &nbsp; &nbsp;</p></td></tr></table>
+
+<p>The transcritical bifurcation conditions are confirmed.</p>
+<br>
+<hr color="#00ff00" width="30%" align="center">
+<br>
+<a name="transcriticalbifurcation"></a>
+<p class="btab">
+Transcritical Bifurcation: r = 1
+</p>
+
+<p>
+The following diagrams display the phase diagrams and solution trajectories of x(t,  x0) for the discrete time, nonlinear dynamic process. At r = 1, the process undergoes a transcritical bifurcation with x<sub>1</sub> switching from attractor to repeller.  Meanwhile, the fixed point x<sub>2</sub> turns positive and becomes an attractor, as can be seen in the diagrams for r = 2. 
+</p>
+
+<table align="center" class="btab" cellpadding="1">
+<tr><td colspan="2" bgcolor="#c0c0c0">
+<p align="center" class="btab">
+r  = 1 &nbsp; &nbsp; &nbsp; &nbsp; x<sub>1</sub> = 0 &nbsp; attractor; &nbsp; transcritical bifurcation 
+</p>
+</td></tr>
+<tr><td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_1.php?r=1" border="0"  alt="" width="275" height="230">
+</p>
+</td><td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_2.php?r=1" border="0"  alt="" width="275" height="230">
+</p>
+</td></tr>
+<tr><td colspan="2" bgcolor="#c0c0c0">
+<p align="center" class="btab">
+r  =  2 &nbsp; &nbsp; &nbsp; &nbsp; x<sub>1</sub> = 0  &nbsp; repeller, &nbsp; &nbsp; x<sub>2</sub> = 1 /2 attractor
+</p>
+</td></tr>
+<tr><td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_1.php?r=2" border="0"  alt="" width="275" height="230">
+</p>
+</td><td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_2.php?r=2" border="0"  alt="" width="275" height="230">
+</p>
+</td></tr>
+</table>
+
+<br>
+<hr color="#00ff00" width="30%" align="center">
+<br>
+<a name="flipbifurcation"></a>
+<p class="btab">
+Period Doubling Bifurcation: r = 3
+</p>
+<p class="btab">
+When r = 3 &rarr;  &lambda;<sub>2</sub> = -1 & x<sub>2</sub> = 2 / 3 &rarr; (x<sup>*</sup>, r<sub>c</sub>) = (2 / 3 , 3) is a non-hyperbolic fixed point. In fact, it is a <a href="http://www.egwald.ca/nonlineardynamics/onedimensionaldynamics_1.php#flipbifurcationconditions" target="Period Doubling Bifurcation">period doubling</a> (supercritical flip) bifurcation point of the mapping <b>f</b>.</p>
+
+<p class="btab">Check the period doubling bifurcation conditions at (x<sup>*</sup>, r<sub>c</sub>) = (2 / 3, 3)</p>
+<table align="center" class="btab" cellpadding="10">
+<tr>
+<td>
+<p class="btab">
+f(x, r) = r * x * (1 - x)<br>
+f<sub>x</sub>(x, r) = r * (1 - 2 * x)<br>
+f<sub>x,x</sub>(x, r) = -2 * r<br>
+</p>
+</td>
+<td valign="top">
+<p class="btab">
+f<sub>r</sub>(x, r) = x * (1 - x)<br>
+f<sub>x,r</sub>(x,r) = (1 - 2 * x)<br>
+f<sub>x,x,x</sub>(x,r) = 0
+</p>
+</td>
+</tr>
+</table>
+
+<table align="center" class="btab" cellpadding="5">
+<tr><td>
+<p class="btab">
+(F1)&nbsp; f(x<sub>2</sub>, r<sub>c</sub>)  - x<sub>2</sub> = 3 * 2 / 3 * (1 - (2 / 3)) - 2 / 3 = 0,<br><br>
+(F2)&nbsp; f<sub>x</sub>(x<sub>2</sub>, r<sub>c</sub>) = 3 * (1 - 2 * 2 / 3) = -1,<br><br>
+(F3)&nbsp; f<sub>r</sub> * f<sub>x,x</sub> + 2 * f<sub>x,r</sub> = (2 / 9) * (-6) + 2 * (-1 / 3)  = -2 &ne; 0,<br><br>
+(F4)&nbsp; c = &nbsp; -2 * f<sub>x,x,x</sub> - 3 * (f<sub>x,x</sub>)<sup>2</sup> = -2 * 0 - 3 * (-6)<sup>2</sup> = - 108 &ne; 0.
+</p>
+</td></tr>
+</table>
+
+<p>The period doubling bifurcation conditions are confirmed.</p>
+<p>Since c < 0 in expression F4, the fixed point x<sub>2</sub> flips from being an attractor to being a repeller. Meanwhile, two stable fixed points of <b>the second-order map f<sup>2</sup></b> emerge that bracket the unstable x<sub>2</sub>.  The trajectory x<sub>t</sub> switches between the two attracting fixed points of <b>f<sup>2</sup></b>.</p>
+<br>
+<hr color="#00ff00" width="30%" align="center">
+<br>
+
+
+<p>
+The following diagrams display the phase diagrams and solution trajectories of x(t,  x0) for the discrete time, nonlinear dynamic process. At r = 3, the <b>f</b> map undergoes a period doubling (flip) bifurcation with x<sub>2</sub> switching from attractor to repeller.  Meanwhile, two stable fixed points x<sub>3</sub> and x<sub>4</sub> of the second order map, <b>f<sup>2</sup></b> emerge.  
+</p>
+<table align="center" class="btab" cellpadding="1">
+<tr><td colspan="2" bgcolor="#c0c0c0">
+<p align="center" class="btab">
+r  = 2.8 &nbsp; &nbsp; &nbsp; &nbsp; x<sub>1</sub> = 0 &nbsp; repeller, &nbsp; &nbsp; x<sub>2</sub> = 0.64 &nbsp; attractor; &nbsp; &nbsp; 
+</p>
+</td></tr>
+<tr><td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_1.php?r=2.8" border="0"  alt="" width="275" height="230">
+</p>
+</td><td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_2.php?r=2.8" border="0"  alt="" width="275" height="230">
+</p>
+</td></tr>
+<tr><td colspan="2" bgcolor="#c0c0c0">
+<p align="center" class="btab">
+r  = 3 &nbsp; &nbsp; &nbsp; &nbsp; x<sub>1</sub> = 0 &nbsp; repeller, &nbsp; &nbsp; x<sub>2</sub> = 2 / 3 &nbsp; attractor; &nbsp; &nbsp; flip bifurcation 
+</p>
+</td></tr>
+<tr><td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_1.php?r=3" border="0"  alt="" width="275" height="230">
+</p>
+</td><td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_2.php?r=3" border="0"  alt="" width="275" height="230">
+</p>
+</td></tr>
+<tr><td colspan="2" bgcolor="#c0c0c0">
+<p align="center" class="btab">
+r  =  3.3 &nbsp; &nbsp; &nbsp; &nbsp; x<sub>1</sub> = 0  &nbsp; repeller, &nbsp; &nbsp; x<sub>2</sub> = 0.7 &nbsp; repeller
+</p>
+</td></tr>
+<tr><td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_1.php?r=3.3" border="0"  alt="" width="275" height="230">
+</p>
+</td><td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_2.php?r=3.3" border="0"  alt="" width="275" height="230">
+</p>
+</td></tr>
+</table>
+
+
+
+<br>
+<hr color="#00ff00" width="30%" align="center">
+<br>
+
+
+<a name="secondordermap"></a>
+<p class="btab">
+The Second Order Map of f (f<sup>2</sup>)
+</p>
+<p>Associated with the logistic map:</p>
+<p align="center" class="btab">
+x<sub>t+1</sub> = f(x<sub>t</sub>, r) = r * x<sub>t</sub> * (1 + x<sub>t</sub>), &nbsp; x<sub>0</sub> = x0 >= 0.&nbsp; &nbsp; &nbsp; &nbsp; 
+</p>
+<p>is the second order map <b>f<sup>2</sup></b> given by:</p>
+<p align="center" class="btab">
+x<sub>t+2</sub>&nbsp; = &nbsp;f(x<sub>t+1</sub>, r) &nbsp;= &nbsp;f (f(x<sub>t</sub>, r), r ) =  r * (r * x<sub>t</sub> * (1 + x<sub>t</sub>)) * (1 + (r * x<sub>t</sub> (1 + x<sub>t</sub>))), or<br><br>
+
+x<sub>t+2</sub>&nbsp; = &nbsp;f<sup>2</sup>(x<sub>t</sub>, r) = 
+-r<sup>3</sup> * x<sub>t</sub><sup>4</sup> + 2 * r<sup>3</sup> * x<sub>t</sub><sup>3</sup> - (r<sup>3</sup> + r<sup>2</sup>) * x<sub>t</sub><sup>2</sup> + r<sup>2</sup> * x<sub>t</sub>
+ &nbsp; &nbsp; &nbsp; &nbsp; (7)
+</p>
+
+
+<p>The partial derivative of <b>f<sup>2</sup></b> with respect to x is:</p>
+<p align="center" class="btab">
+f<sub>x</sub><sup>2</sup>(x, r) = -4 * r<sup>3</sup> * x<sup>3</sup> + 6 * r<sup>3</sup> * x<sup>2</sup> - 2 * (r<sup>3</sup> + r<sup>2</sup>) * x + r<sup>2</sup>. &nbsp; &nbsp; &nbsp; &nbsp; (8)
+</p>
+<p>Fixed points of (7) satisfy:</p>
+<p align="center" class="btab">
+f<sup>2</sup>(x, r) = 
+-r<sup>3</sup> * x<sup>4</sup> + 2 * r<sup>3</sup> * x<sup>3</sup> - (r<sup>3</sup> + r<sup>2</sup>) * x<sup>2</sup> + r<sup>2</sup> * x = x. &nbsp; &nbsp; &nbsp; &nbsp; (9)
+</p>
+
+<p>The fixed points of <b>f<sup>2</sup></b> are:</p>
+<table class="btab" align="center" border="0" cellpadding="5"><tr><td>
+<p class="btab">
+x<sub>1</sub> = 0, <br><br>
+x<sub>2</sub> = (r - 1) / r, <br><br>
+x<sub>3</sub> = (1 + r + sqrt(r<sup>2</sup> - 2 * r - 3)) / (2 * r),<br><br>
+x<sub>4</sub> = (1 + r - sqrt(r<sup>2</sup> - 2 * r - 3)) / (2 * r),
+</p>
+</td></tr></table>
+<p>whose multipliers are:</p>
+<p align="center" class="btab">
+&lambda;<sub>i</sub><sup>2</sup> = f<sub>x</sub><sup>2</sup>(x<sub>i</sub>, r).
+</p>
+<p>The first two fixed points of <b>f<sup>2</sup></b>are also fixed points of <b>f</b>.</p>
+
+<br>
+<hr color="#00ff00" width="30%" align="center">
+<br>
+<p>The following graphs display the phase diagrams of <b><font color="#0000ff">f in blue</font>  and <font color="#ff0000">f<sup>2</sup> in red</font></b>. The stable fixed points x<sub>3</sub> and x<sub>4</sub> of <b>f<sup>2</sup></b> emerge as r increases past 3.  At r = 3, <b>f<sup>2</sup></b> has a fixed point of multiplicity three (ie x<sub>2</sub> = x<sub>3</sub> = x<sub>4</sub> = 2 / 3).  For r > 3, x<sub>3</sub> and x<sub>4</sub> bracket x<sub>2</sub>, and establish the <b>period-2 cycle</b> seen in the above trajectory diagram for r = 3.3. Eventually, these period-2 fixed points become unstable, and undergo flip bifurcations with respect to <b>f<sup>4</sup></b>, the period doubling map of <b>f<sup>2</sup></b>.</p>
+
+<table align="center" class="btab" cellpadding="1">
+<tr><td bgcolor="#c0c0c0">
+<p align="center" class="btab">
+r  = 2.8 
+</p>
+</td>
+<td bgcolor="#c0c0c0">
+<p align="center" class="btab">
+r  =  3 &nbsp; &nbsp; flip bifurcation
+</p>
+</td>
+<td bgcolor="#c0c0c0">
+<p align="center" class="btab">
+r  =  3.3 
+</p>
+</td>
+</tr>
+<tr><td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_3.php?r=2.8" border="0"  alt="" width="275" height="230">
+</p>
+</td>
+<td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_3.php?r=3" border="0"  alt="" width="275" height="230">
+</p>
+</td>
+<td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_3.php?r=3.3" border="0"  alt="" width="275" height="230">
+</p>
+</td>
+</tr>
+</table>
+
+
+
+<br>
+<hr color="#ffff00" width="50%" align="center">
+<br>
+<a name="f2flipbifurcation"></a>
+<p class="btab">
+Second Order (f<sup>2</sup>) Flip Bifurcation : r = 1 + sqrt(6)
+</p>
+
+<p class="btab">
+When r<sub>c</sub> = 1 + sqrt(6) &rarr;  
+x<sub>3</sub> = 0.85 &  x<sub>4</sub> = 0.44  and &lambda;<sup>2</sup><sub>3</sub> = -1 & &lambda;<sup>2</sup><sub>4</sub> = -1 &rarr; x<sub>3</sub> & x<sub>4</sub> non-hyperbolic fixed points of f<sup>2</sup>. In fact, they are period doubling (supercritical flip) bifurcation points of the mapping <b>f<sup>2</sup></b>.</p>
+
+<p class="btab">Check the period doubling bifurcation conditions at (x<sub>3,4</sub>, r<sub>c</sub>) for <b>f<sup>2</sup></b>:</p>
+<table align="center" class="btab" cellpadding="10">
+<tr>
+<td>
+<p class="btab">
+f<sup>2</sup>(x, r) = -r<sup>3</sup> * x<sup>4</sup> + 2 * r<sup>3</sup> * x<sup>3</sup> + (-r<sup>3</sup> - r<sup>2</sup>) * x<sup>2</sup> + r<sup>2</sup> * x<br>
+f<sup>2</sup><sub>x</sub>(x, r) =-4 * r<sup>3</sup> * x<sup>3</sup> + 6 * r<sup>3</sup> * x<sup>2</sup> + 2 * (-r<sup>3</sup> - r<sup>2</sup>) * x + r<sup>2</sup><br>
+f<sup>2</sup><sub>x,x</sub>(x, r) = -12 * r<sup>3</sup> * x<sup>2</sup> + 12 * r<sup>3</sup> * x - 2 * r<sup>3</sup> - 2 * r<sup>2</sup><br>
+</p>
+</td>
+<td valign="top">
+<p class="btab">
+f<sup>2</sup><sub>r</sub>(x, r) = -3 * r<sup>2</sup> * x<sup>4</sup> + 6 * r<sup>2</sup> * x<sup>3</sup> + (-3 * r<sup>2</sup> - 2 * r) * x<sup>2</sup> + 2 * r * x<br>
+f<sup>2</sup><sub>x,r</sub>(x,r) = -12 * r<sup>2</sup> * x<sup>3</sup> + 18 * x<sup>2</sup> * r<sup>2</sup> + 2 * (-3 * r<sup>2</sup> - 2 * r) * x + 2 *r<br>
+f<sup>2</sup><sub>x,x,x</sub>(x,r) = -24 * r<sup>3</sup> * x + 12 * r<sup>3</sup>
+</p>
+</td>
+</tr>
+</table>
+
+<table align="center" class="btab" cellpadding="10" bgcolor="#ffffff" border="1" bordercolor="#008000">
+<tr><td>
+<p class="btab">
+(F1)&nbsp; f<sup>2</sup>(x<sub>3</sub>, r<sub>c</sub>)  - x<sub>3</sub> = 0.85 - 0.85 = 0,<br><br>
+(F2)&nbsp; f<sup>2</sup><sub>x</sub>(x<sub>3</sub>, r<sub>c</sub>) = -1,<br><br>
+(F3)&nbsp; f<sup>2</sup><sub>r</sub> * f<sup>2</sup><sub>x,x</sub> + 2 * f<sup>2</sup><sub>x,r</sub> <br> &nbsp; &nbsp; &nbsp; &nbsp; = (0.2992) * (-43.0679) + 2 * (1.5445)  = -9.7980 &ne; 0,<br><br>
+(F4)&nbsp; c = &nbsp; -2 * f<sup>2</sup><sub>x,x,x</sub> - 3 * (f<sup>2</sup><sub>x,x</sub>)<sup>2</sup> <br> &nbsp; &nbsp; &nbsp; &nbsp; = -2 * (-344.7201) - 3 * (-43.0679)<sup>2</sup> = - 4875.1 &ne; 0.
+</p>
+</td>
+<td>
+<p class="btab">
+(F1)&nbsp; f<sup>2</sup>(x<sub>4</sub>, r<sub>c</sub>)  - x<sub>4</sub> = 0.44 - 0.44 = 0,<br><br>
+(F2)&nbsp; f<sup>2</sup><sub>x</sub>(x<sub>4</sub>, r<sub>c</sub>) = -1,<br><br>
+(F3)&nbsp; f<sup>2</sup><sub>r</sub> * f<sup>2</sup><sub>x,x</sub> + 2 * f<sup>2</sup><sub>x,r</sub> <br> &nbsp; &nbsp; &nbsp; &nbsp; = ( -0.4673) * (15.4719) + 2 * ( -1.2839)  =  -9.7980 &ne; 0,<br><br>
+(F4)&nbsp; c = &nbsp; -2 * f<sup>2</sup><sub>x,x,x</sub> - 3 * (f<sup>2</sup><sub>x,x</sub>)<sup>2</sup> <br> &nbsp; &nbsp; &nbsp; &nbsp;= -2 * (59.1446) - 3 * ( 15.4719)<sup>2</sup> =  -836.43 &ne; 0.
+</p>
+</td>
+</tr>
+</table>
+
+<p>The period doubling bifurcation conditions are confirmed.</p>
+<p>Since c < 0 in the F4 expressions, the fixed points x<sub>3</sub> and x<sub>4</sub> flip from attractors to repellers. Meanwhile, four stable fixed points of <b>the fourth-order map f<sup>4</sup></b> emerge bracketing the unstable x<sub>3</sub> and x<sub>4</sub>.  </p>
+<br>
+<hr color="#00ff00" width="30%" align="center">
+<br>
+
+
+
+
+<p>
+The following diagrams display the phase diagrams and solution trajectories of x(t,  x0) for the discrete time, nonlinear dynamic process. At r = 1 +sqrt(6) = 3.449489742, <b>f<sup>2</sup></b> undergoes a period doubling (flip) bifurcation with x<sub>3</sub> and x<sub>4</sub> switching from attractors to repellers.   The trajectory x<sub>t</sub> switches between the four attracting fixed points of <b>f<sup>4</sup></b>, creating a stable <b>four-cycle</b>.
+</p>
+<table align="center" class="btab" cellpadding="1">
+<tr><td colspan="2" bgcolor="#c0c0c0">
+<p align="center" class="btab">
+r  = 3.4 &nbsp; &nbsp; &nbsp; &nbsp; x<sub>3</sub> = 0.84 &nbsp; attractor, &nbsp; &nbsp; x<sub>4</sub> = 0.45 &nbsp; attractor; &nbsp; &nbsp; 
+</p>
+</td></tr>
+<tr><td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_1.php?r=3.4" border="0"  alt="" width="275" height="230">
+</p>
+</td><td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_2.php?r=3.4" border="0"  alt="" width="275" height="230">
+</p>
+</td></tr>
+<tr><td colspan="2" bgcolor="#c0c0c0">
+<p align="center" class="btab">
+r  = 1 + sqrt(6) &nbsp; &nbsp; &nbsp; &nbsp; x<sub>3</sub> = 0.85 &nbsp; attractor, &nbsp; &nbsp; x<sub>4</sub> = 0.44 &nbsp; attractor; &nbsp; &nbsp; flip bifurcation 
+</p>
+</td></tr>
+<tr><td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_1.php?r=3.4494897427832" border="0"  alt="" width="275" height="230">
+</p>
+</td><td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_2.php?r=3.4494897427832" border="0"  alt="" width="275" height="230">
+</p>
+</td></tr>
+<tr><td colspan="2" bgcolor="#c0c0c0">
+<p align="center" class="btab">
+r  =  3.5 &nbsp; &nbsp; &nbsp; &nbsp; x<sub>3</sub> = 0.86  &nbsp; repeller, &nbsp; &nbsp; x<sub>4</sub> = 0.43 &nbsp; repeller
+</p>
+</td></tr>
+<tr><td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_1.php?r=3.5" border="0"  alt="" width="275" height="230">
+</p>
+</td><td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_2.php?r=3.5" border="0"  alt="" width="275" height="230">
+</p>
+</td></tr>
+</table>
+<br>
+<hr color="#00ff00" width="30%" align="center">
+<br>
+
+<a name="fourthordermap"></a>
+<p class="btab">
+The Fourth Order Map of f (f<sup>4</sup>)
+</p>
+<p>Associated with the logistic map:</p>
+<p align="center" class="btab">
+x<sub>t+1</sub> = f(x<sub>t</sub>, r) = r * x<sub>t</sub> * (1 + x<sub>t</sub>), &nbsp; x<sub>0</sub> = x0 >= 0.&nbsp; &nbsp; &nbsp; &nbsp; 
+</p>
+<p>is the fourth order map <b>f<sup>4</sup></b> given by:</p>
+<p align="center" class="btab">
+x<sub>t+4</sub>&nbsp; = &nbsp;f<sup>4</sup>(x<sub>t</sub>, r)&nbsp; = &nbsp;f ( f ( f ( f (x<sub>t</sub>, r), r ), r ), r ) &nbsp;= &nbsp;f<sup>2</sup> ( f<sup>2</sup> (x<sub>t</sub>, r), r ) ),  
+</p>
+<p>a polynomial in x of <b>degree 16</b>. Consequently, the 4th order map <b>f<sup>4</sup></b> has 16 fixed points, most of which will be complex, except the four fixed points f<sup>4</sup> shares with <b>f<sup>2</sup></b>, and the 4 fixed points that emerge at r = 1 + sqrt(6), bracketing x<sub>3</sub> and x<sub>4</sub>.</p>
+<br>
+<hr color="#00ff00" width="30%" align="center">
+<br>
+<p>The following graphs display the phase diagrams of <b><font color="#0000ff">f in blue</font>, <font color="#ff0000">f<sup>2</sup> in red</font></b>, and <b><font color="#000000">f<sup>4</sup> in black</font></b>.
+After the <b>f<sup>2</sup></b> period doubling bifurcation, four stable fixed points of the fourth order map, <b>f<sup>4</sup></b> emerge, x<sub>5</sub> and x<sub>6</sub> bracketing x<sub>3</sub>, and x<sub>7</sub> and x<sub>8</sub> bracketing x<sub>4</sub>.
+</p>
+<table align="center" class="btab" cellpadding="1">
+<tr><td bgcolor="#c0c0c0">
+<p align="center" class="btab">
+r  = 3.4 
+</p>
+</td>
+<td bgcolor="#c0c0c0">
+<p align="center" class="btab">
+r  =  1 + sqrt(6) &nbsp; &nbsp; <b>f<sup>2</sup></b> flip bifurcation
+</p>
+</td>
+</tr>
+<tr><td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_3_2.php?r=3.4" border="0"  alt="" width="375" height="300">
+</p>
+</td>
+<td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_3_2.php?r=3.4494897427832" border="0"  alt="" width="375" height="300">
+</p>
+</td>
+</tr>
+<tr>
+<td bgcolor="#c0c0c0">
+<p align="center" class="btab">
+r  =  3.5 
+</p>
+</td>
+<td bgcolor="#c0c0c0">
+<p align="center" class="btab">
+r  =  3.54409 &nbsp; &nbsp; <b>f<sup>4</sup></b> flip bifurcation
+</p>
+</td>
+
+</tr>
+<tr>
+<td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_3_2.php?r=3.5&f4=1" border="0"  alt="" width="375" height="300">
+</p>
+</td>
+<td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_3_2.php?r=3.54409&f4=1&X0[5]=.8840&X0[6]=.8198&X0[7]=.5236&X0[8]=.3633" border="0"  alt="" width="375" height="300">
+</p>
+</td>
+
+</tr>
+</table>
+<p>The bifurcation diagram below summarizes the fixed points and bifurcations of f, f<sup>2</sup>, and f<sup>4</sup>. The f map experiences a transcritical bifurcation at r = 1, and a period doubling bifurcation at r = 3.  In turn, the f<sup>2</sup> map undergoes a period doubling bifurcation at r = 1 + sqrt(6), while the f<sup>4</sup> map undergoes a period doubling bifurcation a r = 3.54409. <font color="#0000ff">Stable fixed points of f, f<sup>2</sup>, and f<sup>4</sup> are in blue</font>, <font color="#ff000">while unstable fixed points are in red.</font></p>
+
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_4_1.php" border="0"  alt="" width="375" height="300">
+</p>
+
+<br>
+<hr color="#ffff00" width="50%" align="center">
+<br>
+<a name="perioddoublingcascade"></a>
+<p class="btab">
+Period Doubling Cascade
+</p>
+<p>As r increases, period doublings occur as <b>f, f<sup>2</sup>, f<sup>4</sup>, f<sup>8</sup>, . . . </b> bifurcate at <b>r<sub>1</sub> = 3, r<sub>2</sub> = 3.449, r<sub>3</sub> = 3.54409, r<sub>4</sub> = 3.5644,  . . .</b>.  These {2<sup>n</sup>} cycles of {f<sup>2<sup>n</sup></sup>} and {r<sub>n</sub>} sequences follow the <b>Feigenbaum rule</b>: </p>
+<p align="center" class="btab">
+&delta; = (r<sub>n</sub> - r<sub>n-1</sub>) / (r<sub>n+1</sub> - r<sub>n</sub>) &rarr; 4.6692 as n &rarr; &infin;.
+</p>
+<p>In the limit as <b>n &rarr; &infin;, r<sub>n</sub> &rarr; r<sup>*</sup> = 3.570.</b></p>
+<br>
+<hr color="#ffff00" width="50%" align="center">
+<br>
+<a name="logisticmapbifurcationdiagram"></a>
+<p class="btab">
+Logistic Map Bifurcation Diagram
+</p>
+<p>The bifurcation diagram shows the set of stable fixed points, <b>{x<sup>*</sup>(r)}</b>, as a function of the parameter r for the logistics map: </p>
+<p align="center" class="btab">
+x<sub>t+1</sub> = f(x<sub>t</sub>, r) = r * x<sub>t</sub> * (1 + x<sub>t</sub>), &nbsp; x<sub>0</sub> = x0 >= 0.&nbsp; &nbsp; &nbsp; &nbsp; (10)
+</p>
+<p>For <b>1 < r  < r<sup>*</sup></b>, the period doubling cascade of the sequence of maps <b>{f<sup>2<sup>n</sup></sup>}</b> determines the attracting fixed points.</p>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_5png.png" border="0"  alt="" width="375" height="300">
+</p>
+<p>For <b>r<sup>*</sup> < r <= 4</b>, the band of stable fixed points expands to cover the entire vertical [0, 1] interval at r = 4. For many values of r in the horizontal [r<sup>*</sup>, 4] interval, the orbit:
+</p>
+<p align="center" class="btab">
+{x<sub>t+1</sub> = f(x<sub>t</sub> ,r), x<sub>0</sub> = x0} 
+</p>
+<p>
+exhibits <b>aperiodic &mdash; chaotic  &mdash; behaviour </b>. Also for r in this [r<sup>*</sup>, 4] interval, <b>periodic windows</b> appear. The widest window at r = p3 = 1 + sqrt(8) is the <b>period 3 window</b>. As r increases from r<sup>*</sup> to p3, <b>period 6 and period 5</b> windows also appear. 
+</p>
+<p class="btab">
+Depending on the value of the parameter r, orbits of the logistic map appear orderly or chaotic.</p>
+
+<br>
+<hr color="#ffff00" width="50%" align="center">
+<br>
+<a name="thirdordermap"></a>
+<p class="btab">The Third Order Map of f, f<sup>3</sup></p>
+<p> For r < p3, the <b>f<sup>3</sup> map</b> has two unstable fixed points it shares with the <b>f map</b>. At r = p3 = 1 + sqrt(8), three fixed points emerge, where the graph of the <b>f<sup>3</sup> map</b> has 3 points of tangency with the y = x line. Here, the <b>f<sup>3</sup></b> map undergoes a <b>triple saddle-node bifurcation</b>.</p>
+
+<table align="center" class="btab" cellpadding="1">
+<tr><td colspan="2" bgcolor="#c0c0c0">
+<p align="center" class="btab">
+r  = 3.8  &nbsp; &nbsp; &nbsp; &nbsp; x<sub>1</sub> = 0, &nbsp; x<sub>2</sub> = 0.7368 &nbsp; repellers
+</p>
+</td></tr>
+<tr><td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_3_3.php?r=3.8&nobs=2&X0[2]=.7368" border="0"  alt="" width="300" height="250">
+</p>
+</td><td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_2_1.php?r=3.8&xmin=500&xmax=520" border="0"  alt="" width="300" height="250">
+</p>
+</td></tr>
+<tr><td colspan="2" bgcolor="#c0c0c0">
+<p align="center" class="btab">
+r  = p3 = 1 + sqrt(8) =  3.8284 &nbsp; &nbsp; saddle-node bifurcation &nbsp;  x<sub>1</sub> = 0,  &nbsp; x<sub>2</sub> = 0.7388 &nbsp; repellers<br>
+x<sub>3</sub> = 0.15999288, &nbsp; x<sub>4</sub> = 0.51435528 &nbsp; x<sub>5</sub> = 0.9563178 &nbsp; attractors
+</p>
+</td></tr>
+<tr><td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_3_3.php" border="0"  alt="" width="300" height="250">
+</p>
+</td><td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_2_1.php?xmin=500&xmax=520" border="0"  alt="" width="300" height="250">
+</p>
+</td></tr>
+</table>
+<a name="f3saddlenodebifurcation"></a>
+<p class="btab">
+Saddle-Node Bifurcation of f<sup>3</sup>: r = 1 + sqrt(8) =  3.8284
+</p>
+<p>The following table verifies the <b>triple <a href="http://www.egwald.ca/nonlineardynamics/onedimensionaldynamics_1.php#saddlenodebifurcation" target="Saddle Node Bifurcation">saddle-node bifurcation</a></b> of the f<sup>3</sup> map at the fixed points x<sub>3</sub> = 0.15999288, x<sub>4</sub> = 0.51435528, and x<sub>5</sub> = 0.9563178.</p>
+<table align="center" cellpadding="8" bgcolor="#ffffff"   border="1">
+
+<tr><td>&nbsp;</td>
+<td>
+<p class="btab" align="center">
+x<sub>3</sub>
+</p>
+</td>
+<td>
+<p class="btab" align="center">
+x<sub>4</sub>
+</p>
+</td>
+<td>
+<p class="btab" align="center">
+x<sub>5</sub>
+</p>
+</td>
+</tr>
+<tr bordercolor="#008000">
+<td>
+<p class="btab">
+(SN1) &nbsp; f(x<sup>*</sup>, r<sub>c</sub>) - x<sup>*</sup>= 0 &nbsp; &rarr; &nbsp; (x<sup>*</sup>, r<sub>c</sub>) is a fixed point
+</p>
+</td>
+<td>
+<p class="btab" align="center">
+0
+</p>
+</td>
+<td>
+<p class="btab" align="center">
+0
+</p>
+</td>
+<td>
+<p class="btab" align="center">
+0
+</p>
+</td>
+</tr>
+<tr bordercolor="#008000">
+<td>
+<p class="btab">
+(SN2) &nbsp; f<sub>x</sub>(x<sup>*</sup>, r<sub>c</sub>) = 1 &nbsp; &rarr; &nbsp; (x<sup>*</sup>, r<sub>c</sub>) is non-hyperbolic
+</p>
+</td>
+<td>
+<p class="btab" align="center">1
+</p>
+</td>
+<td>
+<p class="btab" align="center">1
+</p>
+</td>
+<td>
+<p class="btab" align="center">1
+</p>
+</td>
+</tr>
+<tr bordercolor="#008000">
+<td>
+<p class="btab">
+(SN3) &nbsp; a = f<sub>r</sub>(x<sup>*</sup>, r<sub>c</sub>) &ne; 0
+</p>
+</td>
+<td>
+<p class="btab">
+-0.78
+</p>
+</td>
+<td>
+<p class="btab">
+-2.0
+</p>
+</td>
+<td>
+<p class="btab">
+0.223
+</p>
+</td>
+</tr>
+<tr bordercolor="#008000">
+<td>
+<p class="btab">
+(SN4) &nbsp; b = (1/2) * f<sub>x,x</sub>(x<sup>*</sup>, r<sub>c</sub>) &ne; 0
+</p>
+</td>
+<td>
+<p class="btab">
+88.9
+</p>
+</td>
+<td>
+<p class="btab">
+34
+</p>
+</td>
+<td>
+<p class="btab">
+-310.6
+</p>
+</td>
+</tr>
+
+</table>
+<p>The <b>f<sup>3</sup> map</b> undergoes <b><a href="http://www.egwald.ca/nonlineardynamics/onedimensionaldynamics.php#saddlenodebifurcation" target="Saddle Node Types">Type Three</a> (a < 0, b > 0) saddle-node bifurcations</b> at x<sub>3</sub> and x<sub>4</sub>, and a <b>Type Two (a > 0, b < 0) saddle-node bifurcation at x<sub>4</sub></b>.</p>
+<p>One can see the effects of these bifurcations in the diagram below.  At r = 3.839, x<sub>3</sub>, x<sub>4</sub>, and x<sub>5</sub> have each split into a pair of fixed points, one stable and the other unstable.</p>
+<table align="center" class="btab" cellpadding="1">
+<tr><td colspan="2" bgcolor="#c0c0c0">
+<p align="center" class="btab">
+r  = 3.839 &nbsp; &nbsp;  x<sub>1</sub> = 0,  &nbsp; x<sub>2</sub> = 0.7395 &nbsp; repellers<br>
+x<sub>3</sub> = 0.1498883, &nbsp; x<sub>4</sub> = 0.48917231 &nbsp; x<sub>5</sub> = 0.95929992 &nbsp; attractors<br>
+x<sub>6</sub> = 0.16904010, &nbsp; x<sub>7</sub> = 0.53924723, &nbsp; x<sub>8</sub> = 0.95383662 &nbsp; repellers
+</p>
+</td></tr>
+<tr><td>
+<p align="center" class="btab">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_3_3.php?r=3.839&nobs=8&X0[2]=0.7395&X0[3]=0.1498883&X0[4]=0.48917231&X0[5]=0.95929992&X0[6]=0.16904010&X0[7]=0.53924723&X0[8]=0.95383662" border="0"  alt="" width="300" height="250">
+</p>
+</td><td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_2_1.php?r=3.839&xmin=500&xmax=520" border="0"  alt="" width="300" height="250">
+</p>
+</td>
+</tr>
+</table>
+<a name="f3flipbifurcation"></a>
+<p class="btab">
+Third Order Flip Bifurcation : r = 3.8414991
+</p>
+<p>At r  = 3.8414991, x<sub>3</sub>, x<sub>4</sub>, and x<sub>5</sub> flip from attractors to repellers. The <b>f<sup>3</sup> map</b> undergoes a flip bifurcation. Pairs of stable fixed points of the <b>f<sup>9</sup></b> emerge bracketing  x<sub>3</sub>, x<sub>4</sub>, and x<sub>5</sub>. </p>
+<table align="center" class="btab" cellpadding="1">
+<tr><td colspan="2" bgcolor="#c0c0c0">
+<p align="center" class="btab">
+r  = 3.8414991 &nbsp; &nbsp;  x<sub>1</sub> = 0,  &nbsp; x<sub>2</sub> = 0.7397 &nbsp; repellers<br>
+x<sub>3</sub> = 0.14872043, &nbsp; x<sub>4</sub> = 0.48634402 &nbsp; x<sub>5</sub> = 0.953596008 &nbsp; attractors<br>
+triple period doubling bifurcation<br>
+x<sub>6</sub> = 0.169988878, &nbsp; x<sub>7</sub> = 0.54200732, &nbsp; x<sub>8</sub> = 0.95965839 &nbsp; repellers
+</p>
+</td></tr>
+<tr><td>
+<p align="center" class="btab">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_3_3.php?r=3.8414991&nobs=8&X0[2]=0.7397&X0[3]=0.14872043&X0[4]=0.48634402&X0[5]=0.953596008&X0[6]=0.169988878&X0[7]=0.54200732&X0[8]=0.95965839" border="0"  alt="" width="300" height="250">
+</p>
+</td><td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_2_1.php?r=3.8414991&xmin=500&xmax=520" border="0"  alt="" width="300" height="250">
+</p>
+</td>
+</tr>
+</table>
+
+
+
+<p class="btab">
+When r<sub>c</sub> = 3.8414991 &rarr;  
+x<sub>3</sub> = 0.14872043, &nbsp; x<sub>4</sub> = 0.48634402 &nbsp; x<sub>5</sub> = 0.953596008  and &lambda;<sup>3</sup><sub>3,4,5</sub> = -1 &rarr; x<sub>3,4,5</sub> are non-hyperbolic fixed points. In fact, they are period doubling (supercritical flip) bifurcation points of the mapping <b>f<sup>3</sup></b>.</p>
+
+<p class="btab">Check the period doubling bifurcation conditions at (x<sub>3,4,5</sub>, r<sub>c</sub>) for <b>f<sup>3</sup></b>:</p>
+
+
+<table align="center" class="btab" cellpadding="11" bgcolor="#ffffff" border="1" bordercolor="#008000">
+<tr><td>
+<p class="btab">
+(F1)&nbsp; f<sup>3</sup>(x<sub>3</sub>, r<sub>c</sub>)  - x<sub>3</sub> = 0.1487 -  0.1487 = 0,<br><br>
+(F2)&nbsp; f<sup>3</sup><sub>x</sub>(x<sub>3</sub>, r<sub>c</sub>) = -1,<br><br>
+(F3)&nbsp; f<sup>3</sup><sub>r</sub> * f<sup>3</sup><sub>x,x</sub> + 2 * f<sup>3</sup><sub>x,r</sub> <br> &nbsp; &nbsp; = (-0.89) * (199.9) + 2 * ( 7.9)  = -162.13 &ne; 0,<br><br>
+(F4)&nbsp; c = &nbsp; -2 * f<sup>3</sup><sub>x,x,x</sub> - 3 * (f<sup>3</sup><sub>x,x</sub>)<sup>2</sup> <br> &nbsp; &nbsp; = -2 * (-.0013173) - 3 * (199.9)<sup>2</sup> = -117200 &ne; 0.
+</p>
+</td>
+<td>
+<p class="btab">
+(F1)&nbsp; f<sup>3</sup>(x<sub>4</sub>, r<sub>c</sub>)  - x<sub>4</sub> = 0.4863 - 0.4863 = 0,<br><br>
+(F2)&nbsp; f<sup>3</sup><sub>x</sub>(x<sub>4</sub>, r<sub>c</sub>) = -1,<br><br>
+(F3)&nbsp; f<sup>3</sup><sub>r</sub> * f<sup>3</sup><sub>x,x</sub> + 2 * f<sup>3</sup><sub>x,r</sub> <br> &nbsp; &nbsp; = ( -2.15) * (71.9) + 2 * (-3.73) = -162.13 &ne; 0,<br><br>
+(F4)&nbsp; c = &nbsp; -2 * f<sup>3</sup><sub>x,x,x</sub> - 3 * (f<sup>3</sup><sub>x,x</sub>)<sup>2</sup> <br> &nbsp; &nbsp; = -2 * (281.1) - 3 * (71.9)<sup>2</sup> = -16091 &ne; 0.
+</p>
+</td>
+<td>
+<p class="btab">
+(F1)&nbsp; f<sup>3</sup>(x<sub>5</sub>, r<sub>c</sub>)  - x<sub>5</sub> = 0.9536 - 0.9536 = 0,<br><br>
+(F2)&nbsp; f<sup>3</sup><sub>x</sub>(x<sub>5</sub>, r<sub>c</sub>) = -1,<br><br>
+(F3)&nbsp; f<sup>3</sup><sub>r</sub> * f<sup>3</sup><sub>x,x</sub> + 2 * f<sup>3</sup><sub>x,r</sub> <br> &nbsp; &nbsp; = (  0.27) * (-710.2) + 2 * ( 16.25)  =  -162.13 &ne; 0,<br><br>
+(F4)&nbsp; c = &nbsp; -2 * f<sup>3</sup><sub>x,x,x</sub> - 3 * (f<sup>3</sup><sub>x,x</sub>)<sup>2</sup> <br> &nbsp; &nbsp; = -2 * (-25671) - 3 * (-710.2)<sup>2</sup> =  -1461800 &ne; 0.
+</p>
+</td>
+</tr>
+</table>
+<p>The period doubling bifurcation conditions are confirmed.</p>
+<p>The control of the pairs of stable fixed points of the <b>f<sup>9</sup></b> map that bracket the unstable x<sub>3</sub>, x<sub>4</sub>, and x<sub>5</sub> fixed points of <b>f<sup>3</sup></b> of the orbits {x<sub>t</sub>} is evident in the next diagram.</p>
+<table align="center" class="btab" cellpadding="1">
+<tr><td colspan="2" bgcolor="#c0c0c0">
+<p align="center" class="btab">
+r  = 3.845 &nbsp; &nbsp;  x<sub>1</sub> = 0,  &nbsp; x<sub>2</sub> = 0.7399 &nbsp; repellers<br>
+</p>
+</td></tr>
+<tr><td>
+<p align="center" class="btab">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_3_3.php?r=3.845&nobs=2&X0[2]=0.7399" border="0"  alt="" width="300" height="250">
+</p>
+
+</td><td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_2_1.php?r=3.845&xmin=500&xmax=520" border="0"  alt="" width="300" height="250">
+</p>
+</td>
+</tr>
+</table>
+<br>
+<hr color="#ffff00" width="50%" align="center">
+<br>
+<a name="f3perioddoublingcascade"></a>
+<p class="btab">
+The f<sup>3</sup> Period Doubling Cascade
+</p>
+<p>As r increases, period doublings occur at r<sub>1</sub> = p3<sup>1</sup>, r<sub>2</sub> = p3<sup>2</sup>, r<sub>3</sub> = p3<sup>3</sup>, .... as <b>f<sup>3</sup>, f<sup>9</sup>, f<sup>27</sup>, . . . </b> flip bifurcate.
+
+<p>The <b>orbit diagram</b> around the fixed point x<sub>3</sub> of <b>f<sup>3</sup></b> in the region  3.8414991 < r < 3.857 and 0.13 < x < 0.18 shows the period doubling cascade of the sequence of maps <b>{f<sup>3<sup>n</sup></sup>}</b> determining the attracting fixed points of the specific f<sup>3<sup>n</sup></sup> map for p3<sup>n</sup> <= r < p3<sup>n+1</sup>. 
+</p><p>
+In the limit as n &rarr; &infin;, p3<sup>n</sup> &rarr; p3<sup>*</sup>.</p>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_5_1png.png" border="0"  alt="" width="375" height="300">
+</p>
+
+<p>The intermittent emergence of order and chaos revealed in the above miniature orbit diagram for r in the interval [3.8414991, 3.857]  mirrors the pattern of the complete orbit diagram for r in the interval [3, 4] available below.</p>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_5_2png.png" border="0"  alt="" width="375" height="300">
+</p>
+<p>As r converges to 4, the {x<sub>t</sub>} orbits become increasingly chaotic, evident in the diagrams for <b>f and f<sup>3</sup></b>, and the solution trajectory. </p>
+<table align="center" class="btab" cellpadding="1">
+<tr><td colspan="2" bgcolor="#c0c0c0">
+<p align="center" class="btab">
+r  = 3.9 &nbsp; &nbsp;  x<sub>1</sub> = 0,  &nbsp; x<sub>2</sub> = 0.7436 &nbsp; repellers<br>
+x<sub>3</sub> = 0.132652527, &nbsp; x<sub>4</sub> = 0.448717753 &nbsp; x<sub>5</sub> = 0.964743512 &nbsp; repellers<br>
+x<sub>6</sub> = 0.180986006, &nbsp; x<sub>7</sub> = 0.578097280, &nbsp; x<sub>8</sub> = 0.951213178 &nbsp; repellers 
+</p>
+</td></tr>
+<tr><td>
+<p align="center" class="btab">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_3_3.php?r=3.9&nobs=8&X0[2]=0.74360&X0[3]=0.132652527&X0[4]=0.448717753&X0[5]=0.964743512&X0[6]=0.180986006&X0[7]=0.578097280&X0[8]=0.951213178" border="0"  alt="" width="300" height="250">
+</p>
+
+</td><td>
+<p align="center">
+<img src="http://www.egwald.ca/nonlineardynamics/images/logistics_2_1.php?r=3.9&xmin=500&xmax=520" border="0"  alt="" width="300" height="250">
+</p>
+</td>
+</tr>
+</table>
+
+<p class="btab">For r > 4, most trajectories leave the [0, 1] vertical interval.</p>
+
+<br>
+<hr color="#ff0000" width="70%" align="center">
+<br>
+<a name="interactivelogisticmapdiagrams"></a>
+<p class="btab">
+Interactive Logistic Map Diagrams
+</p>
+<p>
+<b><font color="#ff0000">Click to pop a new window with some   
+<a href="javascript:Start('logisticmapdiagrams.php')">interactive logistic map diagrams</a>.</font></b>
+</p>
+<br>
+<hr color="#ff0000" width="70%" align="center">
+<br>
+
+<a name="chaosdefinition"></a>
+<p class="btab">Definitions of Chaos</p>
+<p align="center" class="btab">"Stochastic behavour in a deterministic system."</p>
+<p><b>"Chaos</b> is <em>aperiodic long-term behavour</em> in a <em>deterministic</em> system that <em>exhibits sensitive dependence on initial conditions"</em> (Strogatz 323).</p>
+<p>Let V be a set. The mapping f: V &rarr; V is said to be <b>chaotic</b> on V if:<br>
+&nbsp; &nbsp; 1. f has sensitive dependence on initial conditions,<br>
+&nbsp; &nbsp; 2. f is topologically transitive (all open sets in V within the range of f interact under f),<br>
+&nbsp; &nbsp; 3. periodic points are dense in V. (Devaney 50)<br><br>
+"A chaotic map possesses three ingredients: unpredictability, indecomposability, and an element of regularity "(Devaney 50).
+</p>
+
+
+<br>
+<hr color="#ff0000" width="70%" align="center">
+<br>
+<a name="references"></a>
+<p class="btab" align="center"><font color="#0000ff">References.</font></p>
+<p>
+<ul>
+<li>Burden, Richard L. and J. Douglas Faires. <em>Numerical Analysis</em>. 6th ed. Pacific Grove: Brooks/Cole, 1997.
+</li>
+<li>Demmel, James W. <em>Applied Numerical Linear Algebra</em>. Philadelphia: Siam, 1997.
+</li>
+<li>Devaney, Robert L.  <em>An Introduction to Chaotic Dynamical Systems.</em> Menlo Park, CA: Benjamin/Cummings, 1986.</li>
+<li>Elaydi, Saber N. <em>Discrete Chaos</em>. Boca Raton: Chapman & Hall, 2000.</li>
+<li>Intriligator, M. D. <em>Mathematical Optimization and Economic Theory</em>.  Englewood Cliffs: Prentice-Hall, 1971.</li>
+<li>Kaplan, Wilfred. <em>Ordinary Differential Equations.</em> Reading: Addison-Wesley, 1958.</li>
+<li>Lipschutz, Seymour. <em>Linear Algebra</em>. New York: Schaum McGraw-Hill, 1968.</li>
+<li>Lorenz, Hans-Walter.  <em>Nonlinear Dynamical Economics and Chaotic Motion</em>. Berlin: Springer-Verlag, 1993.</li>
+<li>Mathews, John H. and Kurtis D. Fink. <em>Numerical Methods Using MATLAB</em>. 3rd ed. Upper Saddle River: Prentice Hall, 1999.
+</li>
+<li>Nagata, K. Wayne. <em>Nonlinear Dynamics and Chaos: Mathematics 345 Lecture Notes</em>. Vancouver: University of B.C., 2006</li>
+<li>Press, William H., Brian P. Flannery, Saul A. Teukolsky, and William T. Vetterling. <em>Numerical Recipes: The Art of Scientific Computing.</em>  Cambridge: Cambridge UP, 1989.
+</li>
+<li>Strang, Gilbert. <em>Linear Algebra and Its Applications.</em> 3d ed.  San Diego: Harcourt, 1976.</li>
+<li>Strogatz, Steven H. <em>Nonlinear Dynamics and Chaos.</em> Cambridge MA: Perseus, 1994.</li>
+<li>Wan, Henry Y. Jr. <em>Economic Growth</em>. New York: Harcourt, 1971.</li>
+<li>Watkins, David S. <em>Fundamentals of Matrix Computations</em>. New York: John Wiley, 1991.
+</li>
+</ul>
+</td>
+<td width="5%" bgcolor="#00ccff">&nbsp;</td>
+</tr></table>
+<table class="bgc1" width="100%" border="0" cellspacing="0" cellpadding="0" align="left">
+<tr><td>
+<table class="bgc1" width="100%" border="0" cellspacing="0" cellpadding="2" align="center">
+<tr><td align="right" width="20%">
+<img src="http://www.egwald.ca/images/elmerwiens.jpg" border="0" width="52" height="67" align="absmiddle"> &nbsp; &nbsp;
+</td>
+<td nowrap valign="middle">
+<p class="tab1">&nbsp; &nbsp; &nbsp; 
+<b>
+<font color="#ffffff">
+Copyright &copy; Elmer G. Wiens: &nbsp; Egwald<sup><img src="http://www.egwald.ca/images/myban-tm.png" align="top"  border="0" height="16" width="24"></sup> Web Services Ltd. &nbsp; &nbsp;
+
+<a href="http://www.egwald.ca">
+<img src= "http://www.egwald.ca/counters/image_hits.php?hiturl=/nonlineardynamics/logisticsmapchaos.php" border="0" align="absmiddle"></A> 
+&nbsp;
+
+All Rights Reserved. &nbsp; &nbsp;Inquiries</font>  
+<img src="http://www.egwald.ca/images/email_webmaster.png" border="0" align="absmiddle">
+</b>
+</p>
+</td></tr></table>
+</td>
+<td align="left" width="10%">
+<!--
+<img src="http://www.egwald.ca/images/xmascandle.gif" border="0" width="48" height="64" align="absmiddle"> 
+-->
+&nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;
+</td>
+</tr></table>
+</body>
+</html>

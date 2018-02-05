@@ -1,0 +1,94 @@
+uesta miniguida tratta la generazione di sequenze pseudorandom all'interno di un programma scritto in linguaggio C, mediante l'uso delle funzioni di libreria standard.
+L'idea è di dare l'idea del funzionamento generico dei generatori pseudorandom, per poi passare all'implementazione.
+Linguaggi di programmazione diversi richiederanno accorgimenti diversi.
+Nel seguito, la scrittura "A = B mod N", che si legge "A è congruo a B modulo N", starà a significare che A-B è un multiplo di N. Analogamente, il resto della divisione di X per N sarà indicato come "X mod N".
+
+Innanzitutto: perché pseudorandom?
+
+Partiamo da un principio: nessuna sequenza generata con un algoritmo --- e tutte quelle ottenute mediante un computer lo sono --- può essere considerata veramente casuale.
+In effetti, da un punto di vista intuitivo, una sequenza può dirsi casuale se nessuna sua descrizione è significativamente più corta della stringa stessa: ma nessuna procedura ricorsiva può soddisfare questo requisito per tutti i termini di una sequenza sufficientemente lunga. (Il discorso può essere reso rigoroso, ma non è nell'interesse di questa guida.) Per dirla con le parole di John von Neumann (http://www-groups.dcs.st-andrews.ac.uk/~history/Mathematicians/Von_Neumann.html), "chiunque consideri metodi aritmetici di produzione di cifre casuali è, ovviamente, in uno stato di peccato".
+D'altra parte, l'uso tipico delle sequenze pseudorandom è nella simulazione di fenomeni la cui descrizione richiederebbe un impiego eccessivo di risorse: non è quindi importante che le sequenza generate dal computer siano casuali, ma che lo sembrino. Ragion per cui, l'uso di un generatore pseudorandom al posto di uno random "puro" è, nella maggior parte dei casi, sufficiente; e spesso, consente maggiore controllo.
+
+
+Il funzionamento di fondo
+
+Una sequenza pseudorandom è costituita da una successione di valori x[j], nel quale i primi k valori x[0], x[1], ..., x[k-1] sono scelti in modo da essere difficilmente prevedibili, e ciascuno dei successivi x[j], j>=k, è ottenuto applicando una funzione F sui k precedenti valori x[j-1], x[j-2], ..., x[j-k].
+La sequenza x[0], x[1], ..., x[k-1] dei primi k valori prende il nome di seme della sequenza.
+E' allora ovvio come l'intera sequenza sia completamente determinata dal suo seme.
+In modo empirico, un generatore pseudorandom si considera "buono" se il suo output "segue bene una certa distribuzione", di solito quella uniforme, e "risulta poco prevedibile": questo viene in genere valutato mediante test di tipo statistico.
+
+
+Generatori congruenziali lineari
+
+Un generatore congruenziale lineare ha la forma:
+x[j+1] = (a*x[j] + b) mod m
+dove a è il moltiplicatore, b è l'incremento, ed m è il modulo. In questo caso, k=1, e F(x) = ax+b (mod m).
+Un generatore siffatto può avere al più periodo m.
+Teorema. [Knuth, p. 17] Affinché il generatore congruenziale lineare di moltiplicatore a, incremento b e modulo m abbia periodo m, condizione necessaria e sufficiente è che siano verificate le seguenti tre relazioni:
+1) MCD(c,m) = 1;
+2) a = 1 mod p per ogni primo p che divide m;
+3) se m è multiplo di 4, allora a = 1 mod 4.
+
+
+Le funzioni di libreria del C: rand e srand
+
+Riportiamo le descrizioni del K&R:
+int rand(void)
+rand restituisce un intero pseudo-casuale compreso fra 0 e RAND_MAX, che vale almeno 32767.
+void srand(int seed)
+srand usa seed come seme per una nuova sequenza di numeri pseudo-casuali. Il seme iniziale è 1.
+Che cosa possiamo desumere da queste righe, riguardo al comportamento del generatore? Niente più di quello che c'è scritto: che rand può generare al più RAND_MAX+1 valori diversi, che la probabilità di ottenere uno qualsiasi di questi valori è uguale, e che la sequenza restituita sarà sempre la stessa se all'inizio non si imposta il seme dandogli un valore diverso. Non possiamo fare ipotesi sul periodo del generatore, e tantomeno sul suo tipo.
+
+
+Sequenze uniformemente distribuite in un intervallo assegnato
+
+Il modo "brutale" per ottenere un numero pseudorandom tra 0 ed N-1 è ovviamente:
+val = rand() % N;
+Questo metodo viene dato per buono in alcuni manuali, ma contiene almeno due errori concettuali.
+Anzitutto, non è detto che la distribuzione di val sia uniforme. Infatti lo standard garantisce che il valore restituito da rand sia uniformemente distribuito tra 0 e RAND_MAX inclusi: ne segue che, se N non è un divisore di RAND_MAX+1, allora la probabilità che val sia 0 è maggiore della probabilità che val sia N-1. (Di quanto, dipende dai valori di N e RAND_MAX.)
+Il secondo, e più serio, è che val viene generata usando le cifre meno significative di rand. Ora, se k divide m, allora calcolare la classe resto modulo k della classe resto modulo m di un numero intero qualsiasi, è lo stesso che calcolare direttamente la classe resto modulo k: questo perché, quando si tolgono i multipli di m, si toglie già una parte dei multipli di k. Ne segue che, se rand è congruenziale lineare --- e non si può escludere che lo sia --- di moltiplicatore a, incremento b, e modulo m, e N divide m, allora rand() % N è congruenziale lineare di moltiplicatore a mod N, incremento b mod N, e modulo N: in particolare, il periodo di rand() % N non può superare N.
+Il modo per evitare questo secondo inconveniente, è usare sempre tutte le cifre significative di rand: il modo più immediato per farlo, è trasformare il valore fornito da rand in un numero in virgola mobile in doppia precisione, uniformemente distribuito fra 0 incluso e 1 escluso:
+double frand(void)
+{
+return rand() / (RAND_MAX+1.0);
+}
+Attenzione ai tipi: scrivere 1 anziché 1.0 porta a un generatore che restituisce sempre 0.0. ESERCIZIO: spiegare perché.
+A questo punto, un intero tra 0 ed N-1 si ottiene così:
+val = (int)(frand()*N);
+mentre un reale compreso tra a incluso e b escluso si ottiene così:
+val = a + (b-a)*frand();
+Abbiamo così risolto il problema dell'uso delle cifre, in quanto vengono usate tutte.
+Quello che resta da correggere, è l'uniformità della distribuzione. Infatti, la probabilità che val valga i, è pari a quella che frand sia compresa tra (double)i/N incluso e (double)(i+1)/N escluso, che non è detto sia 1.0/N, per lo stesso motivo per cui non è detto che rand() % N sia i con probabilità 1/N.
+Per convincere i dubbiosi, facciamo un esempio con N=10, RAND_MAX=32767:
+
+val x=frand() r=frand()*(RAND_MAX+1) k=rand()
+0 0.0<=x<0.1 0<=r<3276.8 0<=k<3277
+1 0.1<=x<0.2 3276.8<=r<6553.6 3277<k<6554
+2 0.2<=x<0.3 6553.6<=r<9830.4 6554<=k<9831
+3 0.3<=x<0.4 9830.4<=r<13107.2 9831<=k<13108
+4 0.4<=x<0.5 13107.2<=r<16384 13108<=k<16384
+5 0.5<=x<0.6 16384<=r<19660.8 16384<=k<19661
+6 0.6<=x<0.7 19660.8<=r<22937.6 19661<=k<22938
+7 0.7<=x<0.8 22937.6<=r<26214.4 22938<=k<26215
+8 0.8<=x<0.9 26214.4<=r<29491.2 26215<=k<29492
+9 0.9<=x<1.0 29491.2<=r<32768 29492<=k<32768
+
+Come si può vedere, i valori 4 e 9 si possono ottenere in 3276 casi, contro i 3277 che determinano l'uscita di ciascuno degli altri numeri: di conseguenza, le probabilità di uscita di 4 e 9 sono 3276/32768 < 1/10, mentre gli altri numeri escono con probabilità 3277/32768 > 1/10. Potrebbe essere una tolleranza accettabile; ma potrebbe anche non esserlo.
+Se un tale problema si presenta e va risolto, occorre fare una considerazione di carattere aritmetico. Siano n e k due numeri interi non negativi: esistono esattamente due numeri q ed r tali che n=kq+r e 0<=r<k; se n e k sono variabili di tipo int, allora q è n/k ed r è n%k.
+Ne segue che il più grande intero divisibile per N che non supera RAND_MAX+1, è ((RAND_MAX+1)/N)*N: ma allora, se range <= RAND_MAX+1, possiamo ottenere una variabile intera uniformemente distribuita tra 0 incluso e range escluso nel modo seguente:
+int irand(int range)
+{
+int imax, val;
+
+imax = ((RAND_MAX+1U)/range)*range;
+while ((val=rand()) >= imax)
+;
+
+return (int)(((double)val/range)*range);
+}
+Qui la conversione di val a double è stata necessaria per ottenere un risultato utile, cosa che nell'implementazione di frand era stata garantita dall'aver aggiunto a RAND_MAX la costante 1.0, che è di tipo double. Qui abbiamo invece adoperato 1U per evitare problemi di segno.
+
+
+Bibliografia
+[K&R] B. W. Kernighan, D. M. Ritchie, "Linguaggio C --- Seconda edizione", Jackson Libri 1989
+[Knuth] D. E. Knuth, "The Art of Computer Programming --- Volume 2: Seminumerical Algorithms"

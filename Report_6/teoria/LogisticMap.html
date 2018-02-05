@@ -1,0 +1,1635 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Logistic Map -- from Wolfram MathWorld</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="DC.Creator" content="Weisstein, Eric W." />
+<meta name="DC.Description" content="Replacing the logistic equation  (dx)/(dt)=rx(1-x)  (1)   with the quadratic recurrence equation  x_(n+1)=rx_n(1-x_n),  (2)   where r (sometimes also denoted mu) is a positive constant sometimes known as the &quot;biotic potential&quot; gives the so-called logistic map. This quadratic map is capable of very complicated behavior. While John von Neumann had suggested using the logistic map x_(n+1)=4x_n(1-x_n) as a random number generator in the late 1940s, it was not until work by W. Ricker..." />
+<meta name="DC.Date.Modified" scheme="W3CDTF" content="2001-11-27" />
+<meta name="DC.Date.Modified" scheme="W3CDTF" content="2003-04-29" />
+<meta name="DC.Date.Modified" scheme="W3CDTF" content="2003-05-01" />
+<meta name="DC.Date.Modified" scheme="W3CDTF" content="2003-07-11" />
+<meta name="DC.Date.Modified" scheme="W3CDTF" content="2003-07-25" />
+<meta name="DC.Date.Modified" scheme="W3CDTF" content="2003-08-13" />
+<meta name="DC.Date.Modified" scheme="W3CDTF" content="2003-10-08" />
+<meta name="DC.Date.Modified" scheme="W3CDTF" content="2003-10-09" />
+<meta name="DC.Date.Modified" scheme="W3CDTF" content="2004-01-17" />
+<meta name="DC.Date.Modified" scheme="W3CDTF" content="2004-11-04" />
+<meta name="DC.Date.Modified" scheme="W3CDTF" content="2006-02-16" />
+<meta name="DC.Date.Modified" scheme="W3CDTF" content="2006-04-20" />
+<meta name="DC.Date.Modified" scheme="W3CDTF" content="2006-04-28" />
+<meta name="DC.Subject" scheme="MathWorld" content="Mathematics:Discrete Mathematics:Recurrence Equations" />
+<meta name="DC.Subject" scheme="MathWorld" content="Mathematics:Calculus and Analysis:Dynamical Systems" />
+<meta name="DC.Subject" scheme="MathWorld" content="Mathematics:Number Theory:Constants:Miscellaneous Constants" />
+<meta name="DC.Subject" scheme="MathWorld" content="Mathematics:Number Theory:Constants:Algebraic Constants" />
+<meta name="DC.Subject" scheme="MathWorld" content="Mathematics:Applied Mathematics:Complex Systems:Chaos" />
+<meta name="DC.Subject" scheme="MathWorld" content="Mathematics:Interactive Entries:Animated GIFs" />
+<meta name="DC.Subject" scheme="MathWorld" content="Mathematics:Recreational Mathematics:Mathematics in the Arts:Mathematical Book Covers" />
+<meta name="DC.Subject" scheme="MathWorld" content="Mathematics:MathWorld Contributors:Piezas" />
+<meta name="DC.Subject" scheme="MSC_2000" content="37" />
+<meta name="DC.Subject" scheme="MSC_2000" content="65Q05" />
+<meta name="DC.Rights" content="Copyright 1999-2009 Wolfram Research, Inc.  See http://mathworld.wolfram.com/about/terms.html for a full terms of use statement." />
+<meta name="DC.Format" scheme="IMT" content="text/html" />
+<meta name="DC.Identifier" scheme="URI" content="http://mathworld.wolfram.com/LogisticMap.html" />
+<meta name="DC.Language" scheme="RFC3066" content="en" />
+<meta name="DC.Publisher" content="Wolfram Research, Inc." />
+<meta name="DC.Relation.IsPartOf" scheme="URI" content="http://mathworld.wolfram.com/" />
+<meta name="DC.Type" scheme="DCMIType" content="Text" />
+<meta name="Last-Modified" content="2006-04-28" />
+<link rel="alternate" type="application/rss+xml" title="MathWorld Headline News" href="/news/rss.xml" />
+<link rel="stylesheet" type="text/css" href="/css/mathworld.css" />
+<link rel="shortcut icon" href="/favicon_mathworld.png" type="image/png" />
+<script language="JavaScript" type="text/javascript" src="/common/javascript/menu.js"></script>
+<script language="JavaScript" type="text/javascript" src="/scripts/mathworld.js"></script>
+<script language="JavaScript" type="text/javascript" src="/scripts/downloadNotebook.js"></script>
+</head>
+<body>
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <!-- IE Mac will fail on url('') -->
+      <td style="background-image: url(/images/topbar/header.gif); background-repeat: no-repeat;">
+        <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><img src="/images/spacer.gif" width="615" height="80" border="0" alt="" usemap="#TopMap" /></td>
+<td width="300"><img src="/images/spacer.gif" alt="" width="50" />
+<div class="formwrapper">
+<form name="NavBarSearch" action="http://mathworld.wolfram.com/search/" method="get" accept-charset="UTF-8" onsubmit=" if (checkForDefaultInput('query_1', 'SEARCH MATHWORLD')) { return false; }">
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<!--
+<td valign="middle" nowrap="nowrap"><a href="/search/" style="font-size:10px;">
+Search Site</a>
+</td>
+-->
+<td>
+<table class="searchboxborder" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+  <td><input id="query_1" class="searchboxsub" name="query" type="text" value="SEARCH MATHWORLD" onfocus="initTextInput(this,'clear','SEARCH MATHWORLD')" onblur="initTextInput(this,'setDefault','SEARCH MATHWORLD')" /></td>
+<!--
+  <td><input type="image" src="/common/images/search/searchbox_arrows.gif" class="searchbox" alt="Search" onclick="if (checkForDefaultInput('query_1', 'SEARCH MATHWORLD')) { return false;} else {document.NavBarSearch.submit(); }" /></td>
+-->
+  </tr>
+</table></td>
+<td valign="middle"><input src="/images/topbar/go.gif" type="image" /></td>
+</tr>
+</table>
+</form>
+</div>
+            </td>
+          </tr>
+        </table>
+        <div style="padding-right:840px"></div>
+      </td>
+      <td width="100%"><img src="/images/topbar/header-extend.gif" width="100%" height="79" alt="" /></td>
+    </tr>
+  </table>
+
+<map name="TopMap" id="TopMap">
+  <area shape="rect" coords="11,34,198,51" href="http://www.wolfram.com/products/mathematica/" target="_blank" alt="made with Mathematica technology" />
+  <area shape="rect" coords="8,8,197,30" href="/" alt="MathWorld" />
+</map>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr valign="top">
+<td>
+<!-- Sidebar -->
+
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr><td align="left" valign="top" nowrap="nowrap" width="185">
+    <table cellpadding="0" cellspacing="0" border="0" width="175">
+    <tr><td>
+    <div class="leftsidebar">
+    <div class="mainindices">
+      <a href="/topics/Algebra.html">Algebra</a><br />
+      <a href="/topics/AppliedMathematics.html">Applied Mathematics</a><br />
+      <a href="/topics/CalculusandAnalysis.html">Calculus and Analysis</a><br />
+      <a href="/topics/DiscreteMathematics.html">Discrete Mathematics</a><br />
+      <a href="/topics/FoundationsofMathematics.html">Foundations of Mathematics</a><br />
+      <a href="/topics/Geometry.html">Geometry</a><br />
+      <a href="/topics/HistoryandTerminology.html">History and Terminology</a><br />
+      <a href="/topics/NumberTheory.html">Number Theory</a><br />
+      <a href="/topics/ProbabilityandStatistics.html">Probability and Statistics</a><br />
+      <a href="/topics/RecreationalMathematics.html">Recreational Mathematics</a><br />
+      <a href="/topics/Topology.html">Topology</a><br />
+    </div>
+    </div>
+    </td></tr></table>
+</td></tr>
+<tr><td height="10"></td></tr>
+<tr><td align="left" valign="top" nowrap="nowrap" width="185">
+<table cellpadding="0" cellspacing="0" border="0" width="175">
+    <tr><td>
+    <div class="leftsidebar2">
+    <div class="subindices">
+    <a href="/letters/">Alphabetical Index</a><br />
+    <a href="/topics/InteractiveEntries.html">Interactive Entries</a><br />
+    <a href="/cgi-bin/random.cgi">Random Entry</a><br />
+    <a href="/whatsnew/">New in <i>MathWorld</i></a><br />
+    </div>
+    <div class="divider"></div>
+    <div class="subindices">
+      <a href="/classroom/"><i>MathWorld</i> Classroom</a><br />
+    </div>
+    <div class="divider"></div>
+    <div class="subindices">
+       <a href="/about/">About <i>MathWorld</i></a><br />
+       <a href="/contact/contribute.html">Contribute to <i>MathWorld</i></a><br />
+       <a href="/contact/">Send a Message to the Team</a><br />
+    </div>
+    <div class="divider"></div>
+    <div class="subindices">
+       <a href="http://www.amazon.com/exec/obidos/ASIN/1584883472/ref=nosim/weisstein-20" target="_blank"><i>MathWorld</i> Book</a><br />
+    </div>
+    </div>
+    <div class="leftsidebarfooter">
+      <div class="last-updated">
+      <a href="/whatsnew/">12,963 entries</a>
+      </div>
+      <div class="last-updated">
+      <a href="/whatsnew/">Last updated: Mon Aug 31 2009</a><br />
+      </div>
+      <br />
+      <a href="/about/author.html" onmouseover="MM_swapImage('Image1','','/images/sidebar/created-over_01.gif',1)"
+         onmouseout="MM_swapImgRestore()"><img src="/images/sidebar/created_01.gif" name="Image1" id="Image1" width="120" height="32"
+         title="Created, developed, and nurtured by Eric Weisstein" alt="Created, developed, and nurtured by Eric Weisstein" border="0" /></a><br />
+      <a href="http://www.wolfram.com/" target="_blank" onmouseover="MM_swapImage('Image2','','/images/sidebar/created-over_02.gif',1)"
+         onmouseout="MM_swapImgRestore()"><img src="/images/sidebar/created_02.gif" name="Image2" id="Image2" width="120" height="17"
+         title="at Wolfram Research" alt="at Wolfram Research" border="0" /></a> 
+    </div>
+  </td></tr>
+  </table>
+
+  </td></tr>
+</table>
+
+<!-- End Sidebar -->
+
+</td>
+<td><img src="/images/spacer.gif" alt="" width="20" height="1" /></td>
+<td>
+<div class="leftshadow">
+<div class="centertable">
+<table width="100%">
+<!-- Begin Body -->
+<tr>
+<td><img src="/images/spacer.gif" width="400" height="1" alt="" /></td>
+</tr>
+<tr>
+<td width="100%" align="left" valign="top">
+<!-- Begin Subject -->
+<div id="NS" class="NS_Co">
+<div class="subjectnavbar">
+<a href="/topics/DiscreteMathematics.html">Discrete Mathematics</a>&nbsp;&gt;&nbsp;<a
+ href="/topics/RecurrenceEquations.html">Recurrence Equations</a>&nbsp;&gt;<br />
+</div>
+<div class="subjectnavbar">
+<a href="/topics/CalculusandAnalysis.html">Calculus and Analysis</a>&nbsp;&gt;&nbsp;<a
+ href="/topics/DynamicalSystems.html">Dynamical Systems</a>&nbsp;&gt;<br />
+</div>
+<div class="subjectnavbar">
+<a href="/topics/NumberTheory.html">Number Theory</a>&nbsp;&gt;&nbsp;<a href="/topics/Constants.html">Constants</a>&nbsp;&gt;&nbsp;<a
+ href="/topics/MiscellaneousConstants.html">Miscellaneous Constants</a>&nbsp;&gt;<br />
+</div>
+<div class="more">
+<a href="javascript:togglelinktrail('NS')"><span class="subjectnavbar">More...</span></a>
+</div>
+<div id="NSG" class="NS">
+<div class="subjectnavbar">
+<a href="/topics/NumberTheory.html">Number Theory</a>&nbsp;&gt;&nbsp;<a href="/topics/Constants.html">Constants</a>&nbsp;&gt;&nbsp;<a
+ href="/topics/AlgebraicConstants.html">Algebraic Constants</a>&nbsp;&gt;<br />
+</div>
+<div class="subjectnavbar">
+<a href="/topics/AppliedMathematics.html">Applied Mathematics</a>&nbsp;&gt;&nbsp;<a
+ href="/topics/ComplexSystems.html">Complex Systems</a>&nbsp;&gt;&nbsp;<a href="/topics/Chaos.html">Chaos</a>&nbsp;&gt;<br />
+</div>
+<div class="subjectnavbar">
+<a href="/topics/InteractiveEntries.html">Interactive Entries</a>&nbsp;&gt;&nbsp;<a
+ href="/topics/AnimatedGIFs.html">Animated GIFs</a>&nbsp;&gt;<br />
+</div>
+<div class="subjectnavbar">
+<a href="/topics/RecreationalMathematics.html">Recreational Mathematics</a>&nbsp;&gt;&nbsp;<a href="/topics/MathematicsintheArts.html">Mathematics in the Arts</a>&nbsp;&gt;&nbsp;<a
+ href="/topics/MathematicalBookCovers.html">Mathematical Book Covers</a>&nbsp;&gt;<br />
+</div>
+<div class="subjectnavbar">
+<a href="/topics/MathWorldContributors.html">MathWorld Contributors</a>&nbsp;&gt;&nbsp;<a
+ href="/topics/Piezas.html">Piezas</a>&nbsp;&gt;<br />
+</div>
+<div class="subjectnavbar">
+<a href="/topics/InteractiveEntries.html">Interactive Entries</a>&nbsp;&gt;&nbsp;<a
+ href="/topics/InteractiveDemonstrations.html">Interactive Demonstrations</a>&nbsp;&gt;<br />
+</div>
+<a href="javascript:togglelinktrail('NS')"><span class="subjectnavbar">Less...</span></a>
+</div>
+</div>
+<!-- End Subject -->
+<br />
+<!-- Begin Title -->
+<table border="0" cellspacing="0" cellpadding="0">
+<tr><td valign="baseline" class="title"><span class="nowrap">Logistic Map</span></td></tr><tr><td valign="top"><span class="nowrap"><img src="/images/entries/underline.gif" width="100%"
+ height="3" alt="" /><img src="/images/entries/underline.gif" width="20" height="3"
+ alt="" /></span></td><td><img src="/images/spacer.gif" height="15" alt="" /></td></tr>
+</table>
+<!-- End Title -->
+</td>
+</tr>
+<tr valign="top">
+<td>
+<!-- Begin Total Content -->
+<a href="http://mathworld.wolfram.com/notebooks/DynamicalSystems/LogisticMap.nb" onclick="downloadNotebook('http://mathworld.wolfram.com/notebooks/DynamicalSystems/LogisticMap.nb');return false;"><img
+ src="/images/entries/dnld-nb.gif" width="119" height="26" border="0" alt="DOWNLOAD Mathematica Notebook" /></a>
+<span><a href="/contribute/incomplete_entry.html#LogisticMap"><img src="/images/entries/contribute2.gif"
+ align="bottom" border="0" width="91" height="26" alt="Contribute to this entry" /></a></span>
+<!-- Begin Content -->
+<div align="center">
+<img width="445" height="281" src="images/eps-gif/LogisticEquationIterations_800.gif"
+ alt="LogisticEquationIterations" />
+</div>
+<p class="Text">
+Replacing the <a href="/LogisticEquation.html" class="Hyperlink">logistic equation</a>
+</p>
+<div>
+<table width="100%" align="center" cellspacing="0" cellpadding="0" style="padding-left: 50px">
+<tr><td align="left"><img src="/images/equations/LogisticMap/NumberedEquation1.gif" class="numberedequation" width="94" height="36" border="0" alt=" (dx)/(dt)=rx(1-x) " /></td><td
+ align="right" width="3">
+<div id="eqn1" class="eqnum">
+(1)
+</div>
+</td></tr>
+</table>
+</div>
+<p class="Text">
+with the <a href="/QuadraticRecurrenceEquation.html" class="Hyperlink">quadratic
+recurrence equation</a>
+</p>
+<div>
+<table width="100%" align="center" cellspacing="0" cellpadding="0" style="padding-left: 50px">
+<tr><td align="left"><img src="/images/equations/LogisticMap/NumberedEquation2.gif" class="numberedequation" width="112" height="16" border="0" alt=" x_(n+1)=rx_n(1-x_n), " /></td><td
+ align="right" width="3">
+<div id="eqn2" class="eqnum">
+(2)
+</div>
+</td></tr>
+</table>
+</div>
+<p class="Text">
+where <img src="/images/equations/LogisticMap/Inline1.gif" class="inlineformula" width="5" height="14" border="0" alt="r" /> (sometimes also denoted <img src="/images/equations/LogisticMap/Inline2.gif"
+ class="inlineformula" width="8" height="14" border="0" alt="mu" />) is a <a href="/Positive.html"
+ class="Hyperlink">positive</a> constant sometimes known as the &quot;<a href="/BioticPotential.html"
+ class="Hyperlink">biotic potential</a>&quot; gives the so-called logistic map. This
+ <a href="/QuadraticMap.html" class="Hyperlink">quadratic map</a> is capable of very
+ complicated behavior. While John von Neumann had suggested using the logistic map
+ <img src="/images/equations/LogisticMap/Inline3.gif" class="inlineformula" width="110"
+ height="16" border="0" alt="x_(n+1)=4x_n(1-x_n)" /> as a random number generator
+ in the late 1940s, it was not until work by W.&nbsp;Ricker in 1954 and detailed analytic
+ studies of logistic maps beginning in the 1950s with Paul Stein and Stanislaw Ulam
+ that the complicated properties of this type of map beyond simple oscillatory behavior
+ were widely noted (Wolfram 2002, pp.&nbsp;<a href="http://www.wolframscience.com/nksonline/page-918c-text"
+ class="Hyperlink">918</a>-919).
+</p>
+<p class="Text">
+The first few iterations of the logistic map (<a href="#eqn2" class="Hyperlink">2</a>)
+give
+</p>
+<table align="center" width="100%" cellpadding="0" cellspacing="0" style="padding-left: 50px"
+ border="0">
+<tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline4.gif" class="displayformula" width="13" height="14" border="0" alt="x_1" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline5.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline6.gif"
+ class="displayformula" width="67" height="16" border="0" alt="rx_0(1-x_0)" /></td><td
+ align="right" width="10">
+<div id="eqn3" class="eqnum">
+(3)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline7.gif" class="displayformula" width="13" height="14" border="0" alt="x_2" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline8.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline9.gif"
+ class="displayformula" width="163" height="21" border="0" alt="r^2(1-x_0)x_0(1-rx_0+rx_0^2)" /></td><td
+ align="right" width="10">
+<div id="eqn4" class="eqnum">
+(4)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline10.gif" class="displayformula" width="13" height="16" border="0" alt="x_3" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline11.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline12.gif"
+ class="displayformula" width="415" height="22" border="0" alt="r^3(1-x_0)x_0(1-rx_0+rx_0^2)&#215;(1-r^2x_0+r^2x_0^2+r^3x_0^2-2r^3x_0^3+r^3x_0^4)," /></td><td
+ align="right" width="10">
+<div id="eqn5" class="eqnum">
+(5)
+</div>
+</td></tr>
+</table>
+<p class="Text">
+where <img src="/images/equations/LogisticMap/Inline13.gif" class="inlineformula" width="13" height="16" border="0" alt="x_0" /> is the initial value, plotted above
+ through five iterations (with increasing iteration number indicated by colors; 1
+ is red, 2 is yellow, 3 is green, 4 is blue, and 5 is violet) for various values of
+ <img src="/images/equations/LogisticMap/Inline14.gif" class="inlineformula" width="5"
+ height="14" border="0" alt="r" />.
+</p>
+<table align="center" border="0">
+<tr style="Text"><td align="center">
+<div align="center">
+<a href="http://www.amazon.com/exec/obidos/ASIN/0963167847/ref=nosim/weisstein-20"><img
+ src="/images/covers/0963167847.jpg" width="186" height="289" border="0" alt="" /></a>
+</div>
+</td><td align="center">
+<div align="center">
+<img src="/images/gifs/logistic.gif" width="288" height="288" alt="Web diagram of the logistic map" />
+</div>
+</td></tr>
+</table>
+<p class="Text">
+The logistic map computed using a graphical procedure (Tabor 1989, p.&nbsp;217) is known as a <a href="/WebDiagram.html" class="Hyperlink">web diagram</a>. A <a href="/WebDiagram.html"
+ class="Hyperlink">web diagram</a> showing the first hundred or so iterations of this
+ procedure <img src="/images/equations/LogisticMap/Inline15.gif" class="inlineformula"
+ width="54" height="14" border="0" alt="r=3.741" /> and initial value <img src="/images/equations/LogisticMap/Inline16.gif"
+ class="inlineformula" width="74" height="16" border="0" alt="x_0 approx 0.00079" />
+ appears on the cover of Packel (1996; left figure) and is animated in the right figure
+ above.
+</p>
+<p class="Text">
+In general, this <a href="/RecurrenceEquation.html" class="Hyperlink">recurrence equation</a> cannot be solved in closed form. Wolfram (2002, p.&nbsp;1098) has postulated
+ that any exact solution must be of the form
+</p>
+<div>
+<table width="100%" align="center" cellspacing="0" cellpadding="0" style="padding-left: 50px">
+<tr><td align="left"><img src="/images/equations/LogisticMap/NumberedEquation3.gif" class="numberedequation" width="190" height="23" border="0" alt=" x_n=1/2{1-f[r^nf^(-1)(1-2x_0)]}, " /></td><td
+ align="right" width="3">
+<div id="eqn6" class="eqnum">
+(6)
+</div>
+</td></tr>
+</table>
+</div>
+<p class="Text">
+where <img src="/images/equations/LogisticMap/Inline17.gif" class="inlineformula" width="8" height="14" border="0" alt="f" /> is some function and <img src="/images/equations/LogisticMap/Inline18.gif"
+ class="inlineformula" width="20" height="17" border="0" alt="f^(-1)" /> is its <a
+ href="/InverseFunction.html" class="Hyperlink">inverse function</a>. M.&nbsp;Trott
+ (pers. comm.) has shown that smooth solutions cannot exist for generic values of
+ <img src="/images/equations/LogisticMap/Inline19.gif" class="inlineformula" width="5"
+ height="14" border="0" alt="r" />, with the possible exception of <img src="/images/equations/LogisticMap/Inline20.gif"
+ class="inlineformula" width="5" height="14" border="0" alt="r" /> even and nonzero.
+ The only exact solutions known are for <a href="/LogisticMapR=-2.html" class="Hyperlink"><i>r</i>=-2</a>,
+ <a href="/LogisticMapR=2.html" class="Hyperlink"><i>r</i>=2</a> and <a href="/LogisticMapR=4.html"
+ class="Hyperlink"><i>r</i>=4</a>, summarized in the table below (Wolfram 2002, p.&nbsp;<a
+ href="http://www.wolframscience.com/nksonline/page-1098a-text" class="Hyperlink">1098</a>),
+ and R.&nbsp;Germundsson (pers. comm., Apr.&nbsp;25, 2002) has proved that no other
+ solutions of this form are possible.
+</p>
+<table align="center" class="mathworldtable">
+<tr style="Text"><td align="right"><img src="/images/equations/LogisticMap/Inline21.gif" class="inlineformula" width="5" height="14" border="0" alt="r" /></td><td align="left"><img
+ src="/images/equations/LogisticMap/Inline22.gif" class="inlineformula" width="26"
+ height="14" border="0" alt="f(x)" /></td><td align="left">solution</td></tr><tr style="Text"><td
+ align="right"><img src="/images/equations/LogisticMap/Inline23.gif" class="inlineformula"
+ width="17" height="14" border="0" alt="-2" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline24.gif"
+ class="inlineformula" width="118" height="26" border="0" alt="2cos(1/3(pi-sqrt(3)x))" /></td><td
+ align="left"><img src="/images/equations/LogisticMap/Inline25.gif" class="inlineformula"
+ width="256" height="26" border="0" alt="1/2-cos{1/3[pi-(-2)^n(pi-3cos^(-1)(1/2-x_0))]}" /></td></tr><tr
+ style="Text"><td align="right">2</td><td align="left"><img src="/images/equations/LogisticMap/Inline26.gif"
+ class="inlineformula" width="12" height="14" border="0" alt="e^x" /></td><td align="left"><img
+ src="/images/equations/LogisticMap/Inline27.gif" class="inlineformula" width="161"
+ height="23" border="0" alt="1/2{1-exp[2^nln(1-2x_0)]}" /></td></tr><tr style="Text"><td
+ align="right">4</td><td align="left"><img src="/images/equations/LogisticMap/Inline28.gif"
+ class="inlineformula" width="29" height="14" border="0" alt="cosx" /></td><td align="left"><img
+ src="/images/equations/LogisticMap/Inline29.gif" class="inlineformula" width="180"
+ height="23" border="0" alt="1/2{1-cos[2^ncos^(-1)(1-2x_0)]}" /></td></tr>
+</table>
+<div align="center">
+<img width="525" height="325" src="images/eps-gif/LogisticEquationBifurcation_850.gif"
+ alt="LogisticEquationBifurcation" />
+</div>
+<p class="Text">
+The illustration above shows a bifurcation diagram of the logistic map obtained by plotting as a function of <img src="/images/equations/LogisticMap/Inline30.gif" class="inlineformula"
+ width="5" height="14" border="0" alt="r" /> a series of values for <img src="/images/equations/LogisticMap/Inline31.gif"
+ class="inlineformula" width="13" height="16" border="0" alt="x_n" /> obtained by
+ starting with a random value <img src="/images/equations/LogisticMap/Inline32.gif"
+ class="inlineformula" width="13" height="16" border="0" alt="x_0" />, iterating many
+ times, and discarding the first points corresponding to values before the iterates
+ converge to the attractor. In other words, the set of fixed points of <img src="/images/equations/LogisticMap/Inline33.gif"
+ class="inlineformula" width="13" height="16" border="0" alt="x_n" /> corresponding
+ to a given value of <img src="/images/equations/LogisticMap/Inline34.gif" class="inlineformula"
+ width="5" height="14" border="0" alt="r" /> are plotted for values of <img src="/images/equations/LogisticMap/Inline35.gif"
+ class="inlineformula" width="5" height="14" border="0" alt="r" /> increasing to the
+ right.
+</p>
+<div align="center">
+<img width="542" height="335" src="images/eps-gif/LogisticMapBifurcations_850.gif"
+ alt="LogisticMapBifurcations" />
+</div>
+<p class="Text">
+An enlargement of the previous diagram around <img src="/images/equations/LogisticMap/Inline36.gif" class="inlineformula" width="40" height="14" border="0" alt="r=3.5" /> is illustrated
+ above, with value of <img src="/images/equations/LogisticMap/Inline37.gif" class="inlineformula"
+ width="5" height="14" border="0" alt="r" /> at which a <img src="/images/equations/LogisticMap/Inline38.gif"
+ class="inlineformula" width="13" height="14" border="0" alt="2^n" />-cycle first
+ appears indicated by blue lines.
+</p>
+<p class="Text">
+In order to study the fixed points of the logistic map, let an initial point <img src="/images/equations/LogisticMap/Inline39.gif" class="inlineformula" width="13"
+ height="16" border="0" alt="x_0" /> lie in the interval <img src="/images/equations/LogisticMap/Inline40.gif"
+ class="inlineformula" width="32" height="14" border="0" alt="[0,1]" />. Now find
+ appropriate conditions on <img src="/images/equations/LogisticMap/Inline41.gif" class="inlineformula"
+ width="5" height="14" border="0" alt="r" /> which keep points in the interval. The
+ maximum value <img src="/images/equations/LogisticMap/Inline42.gif" class="inlineformula"
+ width="24" height="16" border="0" alt="x_(n+1)" /> can take is found from
+</p>
+<div>
+<table width="100%" align="center" cellspacing="0" cellpadding="0" style="padding-left: 50px">
+<tr><td align="left"><img src="/images/equations/LogisticMap/NumberedEquation4.gif" class="numberedequation" width="145" height="39" border="0" alt=" (dx_(n+1))/(dx_n)=r(1-2x_n)=0, " /></td><td
+ align="right" width="3">
+<div id="eqn7" class="eqnum">
+(7)
+</div>
+</td></tr>
+</table>
+</div>
+<p class="Text">
+so the largest value of <img src="/images/equations/LogisticMap/Inline43.gif" class="inlineformula" width="24" height="16" border="0" alt="x_(n+1)" /> occurs for <img src="/images/equations/LogisticMap/Inline44.gif"
+ class="inlineformula" width="52" height="16" border="0" alt="x_n=1/2" />. Plugging
+ this in, <img src="/images/equations/LogisticMap/Inline45.gif" class="inlineformula"
+ width="96" height="16" border="0" alt="max(x_(n+1))=r/4" />. Therefore, to keep the
+ <a href="/Map.html" class="Hyperlink">map</a> in the desired region, we must have
+ <img src="/images/equations/LogisticMap/Inline46.gif" class="inlineformula" width="52"
+ height="14" border="0" alt="r in [0,4]" />. The <a href="/Jacobian.html" class="Hyperlink">Jacobian</a>
+ is
+</p>
+<div>
+<table width="100%" align="center" cellspacing="0" cellpadding="0" style="padding-left: 50px">
+<tr><td align="left"><img src="/images/equations/LogisticMap/NumberedEquation5.gif" class="numberedequation" width="157" height="39" border="0" alt=" J=|(dx_(n+1))/(dx_n)|=|r(1-2x_n)|, " /></td><td
+ align="right" width="3">
+<div id="eqn8" class="eqnum">
+(8)
+</div>
+</td></tr>
+</table>
+</div>
+<p class="Text">
+and the <a href="/Map.html" class="Hyperlink">map</a> is stable at a point <img src="/images/equations/LogisticMap/Inline47.gif" class="inlineformula" width="13" height="16" border="0" alt="x_0" /> if <img src="/images/equations/LogisticMap/Inline48.gif"
+ class="inlineformula" width="53" height="16" border="0" alt="J(x_0)&lt;1" />.
+</p>
+<p class="Text">
+Now find the <a href="/FixedPoint.html" class="Hyperlink">fixed points</a> of the <a href="/Map.html" class="Hyperlink">map</a>, which occur when <img src="/images/equations/LogisticMap/Inline49.gif"
+ class="inlineformula" width="54" height="16" border="0" alt="x_(n+1)=x_n" />. For
+ convenience, drop the <img src="/images/equations/LogisticMap/Inline50.gif" class="inlineformula"
+ width="7" height="14" border="0" alt="n" /> subscript on <img src="/images/equations/LogisticMap/Inline51.gif"
+ class="inlineformula" width="13" height="16" border="0" alt="x_n" /> 
+</p>
+<table align="center" width="100%" cellpadding="0" cellspacing="0" style="padding-left: 50px"
+ border="0">
+<tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline52.gif" class="displayformula" width="125" height="14" border="0" alt="f(x)=rx(1-x)=x " /></td><td
+ align="right" width="10">
+<div id="eqn9" class="eqnum">
+(9)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline53.gif" class="displayformula" width="321" height="21" border="0" alt="x[1-r(1-x)]=x(1-r+rx)=rx[x-(1-r^(-1))]=0," /></td><td
+ align="right" width="10">
+<div id="eqn10" class="eqnum">
+(10)
+</div>
+</td></tr>
+</table>
+<p class="Text">
+so the <a href="/FixedPoint.html" class="Hyperlink">fixed points</a> are <img src="/images/equations/LogisticMap/Inline54.gif" class="inlineformula" width="43" height="20" border="0" alt="x_1^((1))=0" /> and
+ <img src="/images/equations/LogisticMap/Inline55.gif" class="inlineformula" width="75"
+ height="20" border="0" alt="x_2^((1))=1-r^(-1)" />.
+</p>
+<p class="Text">
+An interesting thing happens if a value of <img src="/images/equations/LogisticMap/Inline56.gif" class="inlineformula" width="5" height="14" border="0" alt="r" /> greater than 3
+ is chosen. The map becomes unstable and we get a <a href="/PitchforkBifurcation.html"
+ class="Hyperlink">pitchfork bifurcation</a> with two stable orbits of period two
+ corresponding to the two stable <a href="/FixedPoint.html" class="Hyperlink">fixed
+ points</a> of <img src="/images/equations/LogisticMap/Inline57.gif" class="inlineformula"
+ width="32" height="17" border="0" alt="f^2(x)" />. The fixed points of order two
+ must satisfy <img src="/images/equations/LogisticMap/Inline58.gif" class="inlineformula"
+ width="54" height="16" border="0" alt="x_(n+2)=x_n" />, so
+</p>
+<table align="center" width="100%" cellpadding="0" cellspacing="0" style="padding-left: 50px"
+ border="0">
+<tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline59.gif" class="displayformula" width="24" height="16" border="0" alt="x_(n+2)" /></td><td
+ align="center" width="14"><img src="/images/equations/LogisticMap/Inline60.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline61.gif"
+ class="displayformula" width="89" height="16" border="0" alt="rx_(n+1)(1-x_(n+1))" /></td><td
+ align="right" width="10">
+<div id="eqn11" class="eqnum">
+(11)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline62.gif" class="displayformula" width="12" height="14" border="0" alt="" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline63.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline64.gif"
+ class="displayformula" width="187" height="16" border="0" alt="r[rx_n(1-x_n)][1-rx_n(1-x_n)]" /></td><td
+ align="right" width="10">
+<div id="eqn12" class="eqnum">
+(12)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline65.gif" class="displayformula" width="12" height="14" border="0" alt="" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline66.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline67.gif"
+ class="displayformula" width="163" height="21" border="0" alt="r^2x_n(1-x_n)(1-rx_n+rx_n^2)" /></td><td
+ align="right" width="10">
+<div id="eqn13" class="eqnum">
+(13)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline68.gif" class="displayformula" width="12" height="14" border="0" alt="" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline69.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline70.gif"
+ class="displayformula" width="17" height="16" border="0" alt="x_n." /></td><td align="right"
+ width="10">
+<div id="eqn14" class="eqnum">
+(14)
+</div>
+</td></tr>
+</table>
+<p class="Text">
+For convenience, drop the <img src="/images/equations/LogisticMap/Inline71.gif" class="inlineformula"
+ width="7" height="14" border="0" alt="n" /> subscripts and rewrite
+</p>
+<table align="center" width="100%" cellpadding="0" cellspacing="0" style="padding-left: 50px"
+ border="0">
+<tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline72.gif" class="displayformula" width="242" height="21" border="0" alt="x{r^2[1-x(1+r)+2rx^2-rx^3]-1}=0 " /></td><td
+ align="right" width="10">
+<div id="eqn15" class="eqnum">
+(15)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline73.gif" class="displayformula" width="266" height="21" border="0" alt="x[-r^3x^3+2r^3x^2-r^2(1+r)x+(r^2-1)]=0 " /></td><td
+ align="right" width="10">
+<div id="eqn16" class="eqnum">
+(16)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline74.gif" class="displayformula" width="324" height="21" border="0" alt="-r^3x[x-(1-r^(-1))][x^2-(1+r^(-1))x+r^(-1)(1+r^(-1))]=0. " /></td><td
+ align="right" width="10">
+<div id="eqn17" class="eqnum">
+(17)
+</div>
+</td></tr>
+</table>
+<p class="Text">
+Notice that we have found the first-order <a href="/FixedPoint.html" class="Hyperlink">fixed points</a> as well, since two iterations of a first-order <a href="/FixedPoint.html"
+ class="Hyperlink">fixed point</a> produce a trivial second-order <a href="/FixedPoint.html"
+ class="Hyperlink">fixed point</a>. The true 2-<a href="/MapCycle.html" class="Hyperlink">cycles</a>
+ are given by solutions to the quadratic part
+</p>
+<table align="center" width="100%" cellpadding="0" cellspacing="0" style="padding-left: 50px"
+ border="0">
+<tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline75.gif" class="displayformula" width="19" height="18" border="0" alt="x_+/-^((2))" /></td><td
+ align="center" width="14"><img src="/images/equations/LogisticMap/Inline76.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline77.gif"
+ class="displayformula" width="250" height="48" border="0" alt="1/2[(1+r^(-1))+/-sqrt((1+r^(-1))^2-4r^(-1)(1+r^(-1)))]" /></td><td
+ align="right" width="10">
+<div id="eqn18" class="eqnum">
+(18)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline78.gif" class="displayformula" width="12" height="14" border="0" alt="" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline79.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline80.gif"
+ class="displayformula" width="268" height="34" border="0" alt="1/2[(1+r^(-1))+/-sqrt(1+2r^(-1)+r^(-2)-4r^(-1)-4r^(-2))]" /></td><td
+ align="right" width="10">
+<div id="eqn19" class="eqnum">
+(19)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline81.gif" class="displayformula" width="12" height="14" border="0" alt="" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline82.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline83.gif"
+ class="displayformula" width="194" height="34" border="0" alt="1/2[(1+r^(-1))+/-sqrt(1-2r^(-1)-3r^(-2))]" /></td><td
+ align="right" width="10">
+<div id="eqn20" class="eqnum">
+(20)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline84.gif" class="displayformula" width="12" height="14" border="0" alt="" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline85.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline86.gif"
+ class="displayformula" width="198" height="24" border="0" alt="1/2[(1+r^(-1))+/-r^(-1)sqrt((r-3)(r+1))]." /></td><td
+ align="right" width="10">
+<div id="eqn21" class="eqnum">
+(21)
+</div>
+</td></tr>
+</table>
+<p class="Text">
+These solutions are only <a href="/RealNumber.html" class="Hyperlink">real</a> for <img src="/images/equations/LogisticMap/Inline87.gif" class="inlineformula" width="27"
+ height="14" border="0" alt="r&gt;=3" />, so this is where the 2-<a href="/MapCycle.html"
+ class="Hyperlink">cycle</a> begins. Note that the 2-cycle can also be found by computing
+ the <a href="/Discriminant.html" class="Hyperlink">discriminant</a> of
+</p>
+<div>
+<table width="100%" align="center" cellspacing="0" cellpadding="0" style="padding-left: 50px">
+<tr><td align="left"><img src="/images/equations/LogisticMap/NumberedEquation6.gif" class="numberedequation" width="249" height="41" border="0" alt=" (f^2(x)-x)/(f(x)-x)=r^2x^2-r(1+r)x+(1+r)=0, " /></td><td
+ align="right" width="3">
+<div id="eqn22" class="eqnum">
+(22)
+</div>
+</td></tr>
+</table>
+</div>
+<p class="Text">
+which is
+</p>
+<div>
+<table width="100%" align="center" cellspacing="0" cellpadding="0" style="padding-left: 50px">
+<tr><td align="left"><img src="/images/equations/LogisticMap/NumberedEquation7.gif" class="numberedequation" width="82" height="37" border="0" alt=" ((1+r)(3-r))/(r^2). " /></td><td
+ align="right" width="3">
+<div id="eqn23" class="eqnum">
+(23)
+</div>
+</td></tr>
+</table>
+</div>
+<p class="Text">
+When this equals 0, two roots coincide, so <img src="/images/equations/LogisticMap/Inline88.gif" class="inlineformula" width="35" height="14" border="0" alt="r_2=3" /> is the onset
+ of period doubling. For <img src="/images/equations/LogisticMap/Inline89.gif" class="inlineformula"
+ width="31" height="14" border="0" alt="n=2" />, the solutions <img src="/images/equations/LogisticMap/Inline90.gif"
+ class="inlineformula" width="55" height="14" border="0" alt="(x_1,x_2,r)" /> are
+ given by (0, 0, <img src="/images/equations/LogisticMap/Inline91.gif" class="inlineformula"
+ width="17" height="14" border="0" alt="+/-1" />) and (<img src="/images/equations/LogisticMap/Inline92.gif"
+ class="inlineformula" width="22" height="14" border="0" alt="2/3" />, <img src="/images/equations/LogisticMap/Inline93.gif"
+ class="inlineformula" width="22" height="14" border="0" alt="2/3" />, 3), so the
+ first <a href="/Bifurcation.html" class="Hyperlink">bifurcation</a> occurs at <img
+ src="/images/equations/LogisticMap/Inline94.gif" class="inlineformula" width="35"
+ height="14" border="0" alt="r_2=3" />.
+</p>
+<p class="Text">
+In general, the set of <img src="/images/equations/LogisticMap/Inline95.gif" class="inlineformula" width="29" height="14" border="0" alt="n+1" /> equations which can be solved to give
+ the onset of an arbitrary <img src="/images/equations/LogisticMap/Inline96.gif" class="inlineformula"
+ width="7" height="14" border="0" alt="n" />-cycle (Saha and Strogatz 1995) is
+</p>
+<div>
+<table width="100%" align="center" cellspacing="0" cellpadding="0" style="padding-left: 50px">
+<tr><td align="left"><img src="/images/equations/LogisticMap/NumberedEquation8.gif" class="numberedequation" width="128" height="158" border="0" alt=" {x_2=rx_1(1-x_1); x_3=rx_2(1-x_2); |; x_n=rx_(n-1)(1-x_(n-1)); x_1=rx_n(1-x_n); r^nproduct_(k=1)^(n)(1-2x_k)=1. " /></td><td
+ align="right" width="3">
+<div id="eqn24" class="eqnum">
+(24)
+</div>
+</td></tr>
+</table>
+</div>
+<p class="Text">
+The first <img src="/images/equations/LogisticMap/Inline97.gif" class="inlineformula" width="7" height="14" border="0" alt="n" /> of these give <img src="/images/equations/LogisticMap/Inline98.gif"
+ class="inlineformula" width="26" height="14" border="0" alt="f(x)" />, <img src="/images/equations/LogisticMap/Inline99.gif"
+ class="inlineformula" width="32" height="17" border="0" alt="f^2(x)" />, ..., <img
+ src="/images/equations/LogisticMap/Inline100.gif" class="inlineformula" width="32"
+ height="14" border="0" alt="f^n(x)" />, and the last uses the fact that the onset
+ of period <img src="/images/equations/LogisticMap/Inline101.gif" class="inlineformula"
+ width="7" height="14" border="0" alt="n" /> occurs by a <a href="/TangentBifurcation.html"
+ class="Hyperlink">tangent bifurcation</a>, so the <img src="/images/equations/LogisticMap/Inline102.gif"
+ class="inlineformula" width="7" height="14" border="0" alt="n" />th <a href="/Derivative.html"
+ class="Hyperlink">derivative</a> is 1. For small <img src="/images/equations/LogisticMap/Inline103.gif"
+ class="inlineformula" width="7" height="14" border="0" alt="n" />, these can be solved
+ exactly, but the complexity rapidly increases with <img src="/images/equations/LogisticMap/Inline104.gif"
+ class="inlineformula" width="7" height="14" border="0" alt="n" />.
+</p>
+<p class="Text">
+Now look for the onset of the 3-<a href="/MapCycle.html" class="Hyperlink">cycle</a>.
+To eliminate the 1-<a href="/MapCycle.html" class="Hyperlink">cycles</a>, consider
+</p>
+<div>
+<table width="100%" align="center" cellspacing="0" cellpadding="0" style="padding-left: 50px">
+<tr><td align="left"><img src="/images/equations/LogisticMap/NumberedEquation9.gif" class="numberedequation" width="87" height="41" border="0" alt=" (f^3(x)-x)/(f(x)-x)=0. " /></td><td
+ align="right" width="3">
+<div id="eqn25" class="eqnum">
+(25)
+</div>
+</td></tr>
+</table>
+</div>
+<p class="Text">
+This gives
+</p>
+<div>
+<table width="100%" align="center" cellspacing="0" cellpadding="0" style="padding-left: 50px">
+<tr><td align="left"><img src="/images/equations/LogisticMap/NumberedEquation10.gif" class="numberedequation" width="776" height="21" border="0" alt=" 1+r+r^2-(r^4+2r^3+2r^2+r)x+(2r^5+3r^4+3r^3+r^2)x^2-(r^6+5r^5+3r^4+r^3)x^3+(3r^6+4r^5+r^4)x^4-(3r^6-r^5)x^5+r^6x^6=0.  " /></td><td
+ align="right" width="3">
+<div id="eqn26" class="eqnum">
+(26)
+</div>
+</td></tr>
+</table>
+</div>
+<p class="Text">
+The <a href="/Root.html" class="Hyperlink">roots</a> of this equation are all <a href="/ImaginaryNumber.html" class="Hyperlink">imaginary</a> for <img src="/images/equations/LogisticMap/Inline105.gif"
+ class="inlineformula" width="5" height="14" border="0" alt="r" /> less than some
+ cutoff <img src="/images/equations/LogisticMap/Inline106.gif" class="inlineformula"
+ width="11" height="16" border="0" alt="r_3" />, at which point two of them convert
+ to <a href="/RealNumber.html" class="Hyperlink">real</a> roots. The value of <img
+ src="/images/equations/LogisticMap/Inline107.gif" class="inlineformula" width="11"
+ height="16" border="0" alt="r_3" /> can be found by computing the <a href="/Discriminant.html"
+ class="Hyperlink">discriminant</a> of (<a href="#eqn26" class="Hyperlink">26</a>),
+</p>
+<div>
+<table width="100%" align="center" cellspacing="0" cellpadding="0" style="padding-left: 50px">
+<tr><td align="left"><img src="/images/equations/LogisticMap/NumberedEquation11.gif" class="numberedequation" width="263" height="44" border="0" alt=" D=((r^2-5r+7)^2(r^2-2r-7)^3(1+r+r^2)^2)/(r^(30)). " /></td><td
+ align="right" width="3">
+<div id="eqn27" class="eqnum">
+(27)
+</div>
+</td></tr>
+</table>
+</div>
+<p class="Text">
+When the <a href="/Discriminant.html" class="Hyperlink">discriminant</a> is zero,
+two roots coincide. This happens at
+</p>
+<div>
+<table width="100%" align="center" cellspacing="0" cellpadding="0" style="padding-left: 50px">
+<tr><td align="left"><img src="/images/equations/LogisticMap/NumberedEquation12.gif" class="numberedequation" width="170" height="22" border="0" alt=" r_3=1+2sqrt(2)=3.828427... " /></td><td
+ align="right" width="3">
+<div id="eqn28" class="eqnum">
+(28)
+</div>
+</td></tr>
+</table>
+</div>
+<p class="Text">
+(Sloane's <a href="http://www.research.att.com/~njas/sequences/A086178" class="Hyperlink">A086178</a>) as first shown by Myrberg in 1958, so the 3-<a href="/MapCycle.html" class="Hyperlink">cycle</a>
+ starts at <img src="/images/equations/LogisticMap/Inline108.gif" class="inlineformula"
+ width="11" height="16" border="0" alt="r_3" />. Saha and Strogatz (1995) give a simplified
+ algebraic treatment for the 3-cycle which involves solving
+</p>
+<div>
+<table width="100%" align="center" cellspacing="0" cellpadding="0" style="padding-left: 50px">
+<tr><td align="left"><img src="/images/equations/LogisticMap/NumberedEquation13.gif" class="numberedequation" width="155" height="17" border="0" alt=" r^3(1-2alpha+4beta-8gamma)=1, " /></td><td
+ align="right" width="3">
+<div id="eqn29" class="eqnum">
+(29)
+</div>
+</td></tr>
+</table>
+</div>
+<p class="Text">
+together with three other simultaneous equations, where
+</p>
+<table align="center" width="100%" cellpadding="0" cellspacing="0" style="padding-left: 50px"
+ border="0">
+<tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline109.gif" class="displayformula" width="8" height="14" border="0" alt="alpha" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline110.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline111.gif"
+ class="displayformula" width="69" height="16" border="0" alt="x_1+x_2+x_3" /></td><td
+ align="right" width="10">
+<div id="eqn30" class="eqnum">
+(30)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline112.gif" class="displayformula" width="8" height="14" border="0" alt="beta" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline113.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline114.gif"
+ class="displayformula" width="117" height="16" border="0" alt="x_1x_2+x_1x_3+x_2x_3" /></td><td
+ align="right" width="10">
+<div id="eqn31" class="eqnum">
+(31)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline115.gif" class="displayformula" width="7" height="14" border="0" alt="gamma" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline116.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline117.gif"
+ class="displayformula" width="49" height="16" border="0" alt="x_1x_2x_3." /></td><td
+ align="right" width="10">
+<div id="eqn32" class="eqnum">
+(32)
+</div>
+</td></tr>
+</table>
+<p class="Text">
+Further simplifications still are provided in Bechhoeffer (1996) and Gordon (1996), but neither of these techniques generalizes easily to higher <a href="/MapCycle.html"
+ class="Hyperlink">cycles</a>. Bechhoeffer (1996) expresses the three additional equations
+ as
+</p>
+<table align="center" width="100%" cellpadding="0" cellspacing="0" style="padding-left: 50px"
+ border="0">
+<tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline118.gif" class="displayformula" width="18" height="14" border="0" alt="2alpha" /></td><td
+ align="center" width="14"><img src="/images/equations/LogisticMap/Inline119.gif"
+ class="displayformula" width="9" height="14" border="0" alt="=" /></td><td align="left"><img
+ src="/images/equations/LogisticMap/Inline120.gif" class="displayformula" width="39"
+ height="17" border="0" alt="3+r^(-1)" /></td><td align="right" width="10">
+<div id="eqn33" class="eqnum">
+(33)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline121.gif" class="displayformula" width="18" height="14" border="0" alt="4beta" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline122.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline123.gif"
+ class="displayformula" width="96" height="23" border="0" alt="3/2+5r^(-1)+3/2r^(-2)" /></td><td
+ align="right" width="10">
+<div id="eqn34" class="eqnum">
+(34)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline124.gif" class="displayformula" width="17" height="14" border="0" alt="8gamma" /></td><td
+ align="center" width="14"><img src="/images/equations/LogisticMap/Inline125.gif"
+ class="displayformula" width="9" height="14" border="0" alt="=" /></td><td align="left"><img
+ src="/images/equations/LogisticMap/Inline126.gif" class="displayformula" width="156"
+ height="23" border="0" alt="-1/2+7/2r^(-1)+5/2r^(-2)+5/2r^(-3)," /></td><td align="right"
+ width="10">
+<div id="eqn35" class="eqnum">
+(35)
+</div>
+</td></tr>
+</table>
+<p class="Text">
+giving
+</p>
+<div>
+<table width="100%" align="center" cellspacing="0" cellpadding="0" style="padding-left: 50px">
+<tr><td align="left"><img src="/images/equations/LogisticMap/NumberedEquation14.gif" class="numberedequation" width="91" height="17" border="0" alt=" r^2-2r-7=0. " /></td><td
+ align="right" width="3">
+<div id="eqn36" class="eqnum">
+(36)
+</div>
+</td></tr>
+</table>
+</div>
+<p class="Text">
+This has the positive solution found previously, <img src="/images/equations/LogisticMap/Inline127.gif"
+ class="inlineformula" width="83" height="22" border="0" alt="r_3=1+2sqrt(2)" />.
+</p>
+<p class="Text">
+Gordon (1996) derives not only the value for the onset of the 3-<a href="/MapCycle.html" class="Hyperlink">cycle</a>, but also an upper bound <img src="/images/equations/LogisticMap/Inline128.gif"
+ class="inlineformula" width="9" height="14" border="0" alt="r^'" /> for the <img
+ src="/images/equations/LogisticMap/Inline129.gif" class="inlineformula" width="5"
+ height="14" border="0" alt="r" />-values supporting stable period-3 orbits. This
+ value is related to the unique positive root <img src="/images/equations/LogisticMap/Inline130.gif"
+ class="inlineformula" width="11" height="14" border="0" alt="s_1" /> of the <a href="/CubicEquation.html"
+ class="Hyperlink">cubic equation</a>
+</p>
+<div>
+<table width="100%" align="center" cellspacing="0" cellpadding="0" style="padding-left: 50px">
+<tr><td align="left"><img src="/images/equations/LogisticMap/NumberedEquation15.gif" class="numberedequation" width="151" height="17" border="0" alt=" s^3-11s^2+37s-108=0 " /></td><td
+ align="right" width="3">
+<div id="eqn37" class="eqnum">
+(37)
+</div>
+</td></tr>
+</table>
+</div>
+<p class="Text">
+by
+</p>
+<div>
+<table width="100%" align="center" cellspacing="0" cellpadding="0" style="padding-left: 50px">
+<tr><td align="left"><img src="/images/equations/LogisticMap/NumberedEquation16.gif" class="numberedequation" width="79" height="19" border="0" alt=" r^'=1+sqrt(s_1), " /></td><td
+ align="right" width="3">
+<div id="eqn38" class="eqnum">
+(38)
+</div>
+</td></tr>
+</table>
+</div>
+<p class="Text">
+which is the unique positive <a href="/PolynomialRoots.html" class="Hyperlink">root</a>
+of the sextic polynomial
+</p>
+<table align="center" width="100%" cellpadding="0" cellspacing="0" style="padding-left: 50px"
+ border="0">
+<tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline131.gif" class="displayformula" width="9" height="14" border="0" alt="r^'" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline132.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline133.gif"
+ class="displayformula" width="261" height="21" border="0" alt="(x^6-6x^5+4x^4+24x^3-14x^2-36x-81)_2" /></td><td
+ align="right" width="10">
+<div id="eqn39" class="eqnum">
+(39)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline134.gif" class="displayformula" width="12" height="14" border="0" alt="" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline135.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline136.gif"
+ class="displayformula" width="112" height="14" border="0" alt="3.841499007543..." /></td><td
+ align="right" width="10">
+<div id="eqn40" class="eqnum">
+(40)
+</div>
+</td></tr>
+</table>
+<p class="Text">
+(Sloane's <a href="http://www.research.att.com/~njas/sequences/A086179" class="Hyperlink">A086179</a>). For <img src="/images/equations/LogisticMap/Inline137.gif" class="inlineformula"
+ width="31" height="14" border="0" alt="n=3" />,
+</p>
+<table align="center" width="100%" cellpadding="0" cellspacing="0" style="padding-left: 50px"
+ border="0">
+<tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline138.gif" class="displayformula" width="57" height="40" border="0" alt="(d[f^3(x)])/(dx)" /></td><td
+ align="center" width="14"><img src="/images/equations/LogisticMap/Inline139.gif"
+ class="displayformula" width="9" height="14" border="0" alt="=" /></td><td align="left"><img
+ src="/images/equations/LogisticMap/Inline140.gif" class="displayformula" width="169"
+ height="46" border="0" alt="(d[f^3(x)])/(d[f^2(x)])(d[f^2(x)])/(d[f(x)])(d[f(x)])/(dx)" /></td><td
+ align="right" width="10">
+<div id="eqn41" class="eqnum">
+(41)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline141.gif" class="displayformula" width="12" height="14" border="0" alt="" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline142.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline143.gif"
+ class="displayformula" width="156" height="38" border="0" alt="(d[f(z)])/(dz)(d[f(y)])/(dy)(d[f(x)])/(dx)" /></td><td
+ align="right" width="10">
+<div id="eqn42" class="eqnum">
+(42)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline144.gif" class="displayformula" width="12" height="14" border="0" alt="" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline145.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline146.gif"
+ class="displayformula" width="164" height="17" border="0" alt="r^3(1-2z)(1-2y)(1-2x)." /></td><td
+ align="right" width="10">
+<div id="eqn43" class="eqnum">
+(43)
+</div>
+</td></tr>
+</table>
+<p class="Text">
+Solving the resulting <a href="/CubicEquation.html" class="Hyperlink">cubic equation</a>
+using computer algebra gives
+</p>
+<div>
+<table width="100%" align="center" cellspacing="0" cellpadding="0" style="padding-left: 50px">
+<tr><td align="left"><img src="/images/equations/LogisticMap/NumberedEquation17.gif" class="numberedequation" width="77" height="20" border="0" alt=" r=1+2sqrt(2) " /></td><td
+ align="right" width="3">
+<div id="eqn44" class="eqnum">
+(44)
+</div>
+</td></tr>
+</table>
+</div>
+<p class="Text">
+and <img src="/images/equations/LogisticMap/Inline147.gif" class="inlineformula" width="13" height="14" border="0" alt="x_1" />, <img src="/images/equations/LogisticMap/Inline148.gif"
+ class="inlineformula" width="13" height="14" border="0" alt="x_2" />, <img src="/images/equations/LogisticMap/Inline149.gif"
+ class="inlineformula" width="13" height="16" border="0" alt="x_3" /> given by
+</p>
+<div>
+<table width="100%" align="center" cellspacing="0" cellpadding="0" style="padding-left: 50px">
+<tr><td align="left"><img src="/images/equations/LogisticMap/NumberedEquation18.gif" class="numberedequation" width="334" height="17" border="0" alt=" 343x^6-980x^5+868x^4-134x^3-161x^2+70x-7=0, " /></td><td
+ align="right" width="3">
+<div id="eqn45" class="eqnum">
+(45)
+</div>
+</td></tr>
+</table>
+</div>
+<p class="Text">
+giving numerical roots
+</p>
+<table align="center" width="100%" cellpadding="0" cellspacing="0" style="padding-left: 50px"
+ border="0">
+<tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline150.gif" class="displayformula" width="13" height="14" border="0" alt="x_1" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline151.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline152.gif"
+ class="displayformula" width="320" height="21" border="0" alt="(343x^6-980x^5+868x^4-134x^3-161x^2+70x-7)_2" /></td><td
+ align="right" width="10">
+<div id="eqn46" class="eqnum">
+(46)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline153.gif" class="displayformula" width="12" height="14" border="0" alt="" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline154.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline155.gif"
+ class="displayformula" width="222" height="26" border="0" alt="sqrt(2)-2/7(1-2sqrt(2))[1+cos(2/7pi)-5]" /></td><td
+ align="right" width="10">
+<div id="eqn47" class="eqnum">
+(47)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline156.gif" class="displayformula" width="12" height="14" border="0" alt="" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline157.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline158.gif"
+ class="displayformula" width="70" height="14" border="0" alt="0.514355..." /></td><td
+ align="right" width="10">
+<div id="eqn48" class="eqnum">
+(48)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline159.gif" class="displayformula" width="13" height="14" border="0" alt="x_2" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline160.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline161.gif"
+ class="displayformula" width="320" height="21" border="0" alt="(343x^6-980x^5+868x^4-134x^3-161x^2+70x-7)_4" /></td><td
+ align="right" width="10">
+<div id="eqn49" class="eqnum">
+(49)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline162.gif" class="displayformula" width="12" height="14" border="0" alt="" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline163.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline164.gif"
+ class="displayformula" width="222" height="26" border="0" alt="sqrt(2)-2/7(1-2sqrt(2))[1+cos(4/7pi)-5]" /></td><td
+ align="right" width="10">
+<div id="eqn50" class="eqnum">
+(50)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline165.gif" class="displayformula" width="12" height="14" border="0" alt="" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline166.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline167.gif"
+ class="displayformula" width="70" height="14" border="0" alt="0.956318..." /></td><td
+ align="right" width="10">
+<div id="eqn51" class="eqnum">
+(51)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline168.gif" class="displayformula" width="13" height="16" border="0" alt="x_3" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline169.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline170.gif"
+ class="displayformula" width="320" height="22" border="0" alt="(343x^6-980x^5+868x^4-134x^3-161x^2+70x-7)_5" /></td><td
+ align="right" width="10">
+<div id="eqn52" class="eqnum">
+(52)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline171.gif" class="displayformula" width="12" height="14" border="0" alt="" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline172.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline173.gif"
+ class="displayformula" width="222" height="26" border="0" alt="sqrt(2)-2/7(1-2sqrt(2))[1+cos(6/7pi)-5]" /></td><td
+ align="right" width="10">
+<div id="eqn53" class="eqnum">
+(53)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline174.gif" class="displayformula" width="12" height="14" border="0" alt="" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline175.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline176.gif"
+ class="displayformula" width="70" height="14" border="0" alt="0.159929..." /></td><td
+ align="right" width="10">
+<div id="eqn54" class="eqnum">
+(54)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline177.gif" class="displayformula" width="5" height="14" border="0" alt="r" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline178.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline179.gif"
+ class="displayformula" width="74" height="14" border="0" alt="3.828427...," /></td><td
+ align="right" width="10">
+<div id="eqn55" class="eqnum">
+(55)
+</div>
+</td></tr>
+</table>
+<p class="Text">
+where <img src="/images/equations/LogisticMap/Inline180.gif" class="inlineformula" width="84" height="26" border="0" alt="2+2cos(2/7pi)" /> is the <a href="/SilverConstant.html"
+ class="Hyperlink">silver constant</a>.
+</p>
+<p class="Text">
+To find the onset of the 4-<a href="/MapCycle.html" class="Hyperlink">cycle</a>,
+eliminate the 2- and 1-<a href="/MapCycle.html" class="Hyperlink">cycles</a> by considering
+</p>
+<div>
+<table width="100%" align="center" cellspacing="0" cellpadding="0" style="padding-left: 50px">
+<tr><td align="left"><img src="/images/equations/LogisticMap/NumberedEquation19.gif" class="numberedequation" width="87" height="43" border="0" alt=" (f^4(x)-x)/(f^2(x)-x)=0. " /></td><td
+ align="right" width="3">
+<div id="eqn56" class="eqnum">
+(56)
+</div>
+</td></tr>
+</table>
+</div>
+<p class="Text">
+This gives a 12th-order polynomial in <img src="/images/equations/LogisticMap/Inline181.gif" class="inlineformula" width="7" height="14" border="0" alt="x" />. The value of <img
+ src="/images/equations/LogisticMap/Inline182.gif" class="inlineformula" width="11"
+ height="14" border="0" alt="r_4" /> can be found by computing the <a href="/Discriminant.html"
+ class="Hyperlink">discriminant</a> of this polynomial,
+</p>
+<div>
+<table width="100%" align="center" cellspacing="0" cellpadding="0" style="padding-left: 50px">
+<tr><td align="left"><img src="/images/equations/LogisticMap/NumberedEquation20.gif" class="numberedequation" width="496" height="44" border="0" alt=" D=((r^2+1)^3(r^2-4r+5)^3(r^2-2r-5)^2)/(r^(132))(r^6-6r^5+3r^4+28r^3-9r^2-54r-135),  " /></td><td
+ align="right" width="3">
+<div id="eqn57" class="eqnum">
+(57)
+</div>
+</td></tr>
+</table>
+</div>
+<p class="Text">
+whose only real positive roots are
+</p>
+<table align="center" width="100%" cellpadding="0" cellspacing="0" style="padding-left: 50px"
+ border="0">
+<tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline183.gif" class="displayformula" width="11" height="16" border="0" alt="r_4^'" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline184.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline185.gif"
+ class="displayformula" width="45" height="20" border="0" alt="1+sqrt(6)" /></td><td
+ align="right" width="10">
+<div id="eqn58" class="eqnum">
+(58)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline186.gif" class="displayformula" width="12" height="14" border="0" alt="" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline187.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline188.gif"
+ class="displayformula" width="70" height="14" border="0" alt="3.449489..." /></td><td
+ align="right" width="10">
+<div id="eqn59" class="eqnum">
+(59)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline189.gif" class="displayformula" width="13" height="16" border="0" alt="r_4^('')" /></td><td
+ align="center" width="14"><img src="/images/equations/LogisticMap/Inline190.gif"
+ class="displayformula" width="9" height="14" border="0" alt="=" /></td><td align="left"><img
+ src="/images/equations/LogisticMap/Inline191.gif" class="displayformula" width="101"
+ height="26" border="0" alt="1+sqrt(4+3(4^(1/3)))" /></td><td align="right" width="10">
+<div id="eqn60" class="eqnum">
+(60)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline192.gif" class="displayformula" width="12" height="14" border="0" alt="" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline193.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline194.gif"
+ class="displayformula" width="70" height="14" border="0" alt="3.906010..." /></td><td
+ align="right" width="10">
+<div id="eqn61" class="eqnum">
+(61)
+</div>
+</td></tr>
+</table>
+<p class="Text">
+The 4-<a href="/MapCycle.html" class="Hyperlink">cycle</a> therefore starts at
+</p>
+<div>
+<table width="100%" align="center" cellspacing="0" cellpadding="0" style="padding-left: 50px">
+<tr><td align="left"><img src="/images/equations/LogisticMap/NumberedEquation21.gif" class="numberedequation" width="160" height="20" border="0" alt=" r_4=1+sqrt(6)=3.449489... " /></td><td
+ align="right" width="3">
+<div id="eqn62" class="eqnum">
+(62)
+</div>
+</td></tr>
+</table>
+</div>
+<p class="Text">
+(Sloane's <a href="http://www.research.att.com/~njas/sequences/A086180" class="Hyperlink">A086180</a>).
+</p>
+<p class="Text">
+The onset of 5-cycles can be found analytically, and gives a 22nd-order polynomial in <img src="/images/equations/LogisticMap/Inline195.gif" class="inlineformula" width="5"
+ height="14" border="0" alt="r" /> whose real positive roots are <img src="/images/equations/LogisticMap/Inline196.gif"
+ class="inlineformula" width="91" height="16" border="0" alt="r_5=3.73817..." /> (Sloane's
+ <a href="http://www.research.att.com/~njas/sequences/A118452" class="Hyperlink">A118452</a>),
+ 3.90557..., and 3.99026....
+</p>
+<p class="Text">
+The onset of 6-cycles can be found analytically, and gives a 40th-order polynomial in <img src="/images/equations/LogisticMap/Inline197.gif" class="inlineformula" width="5"
+ height="14" border="0" alt="r" /> whose real positive roots are <img src="/images/equations/LogisticMap/Inline198.gif"
+ class="inlineformula" width="91" height="16" border="0" alt="r_6=3.62655..." /> (Sloane's
+ <a href="http://www.research.att.com/~njas/sequences/A118453" class="Hyperlink">A118453</a>),
+ 3.93751..., 3.97776..., and 3.99758....
+</p>
+<p class="Text">
+The onset of 7-cycles can be found analytically, and gives a 114th-order polynomial in <img src="/images/equations/LogisticMap/Inline199.gif" class="inlineformula" width="5"
+ height="14" border="0" alt="r" /> whose real positive roots are <img src="/images/equations/LogisticMap/Inline200.gif"
+ class="inlineformula" width="91" height="16" border="0" alt="r_7=3.70164..." /> (Sloane's
+ <a href="http://www.research.att.com/~njas/sequences/A118746" class="Hyperlink">A118746</a>),
+ 3.77413..., 3.88602..., 3.92218..., 3.95102..., 3.96897..., 3.98474..., 3.99453...,
+ and 3.99939....
+</p>
+<p class="Text">
+The onset of 8-cycles can be found analytically as the <a href="/PolynomialRoots.html"
+ class="Hyperlink">polynomial root</a> of the 8th-order polynomial
+</p>
+<table align="center" width="100%" cellpadding="0" cellspacing="0" style="padding-left: 50px"
+ border="0">
+<tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline201.gif" class="displayformula" width="11" height="16" border="0" alt="r_8" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline202.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline203.gif"
+ class="displayformula" width="537" height="22" border="0" alt="(4913+2108t^2-604t^3-977t^4+8t^5+44t^6+392t^7-193t^8-40t^9+48t^(10)-12t^(11)+t^(12))_3" /></td><td
+ align="right" width="10">
+<div id="eqn63" class="eqnum">
+(63)
+</div>
+</td></tr><tr style="Text"><td align="right" width="1"><img src="/images/equations/LogisticMap/Inline204.gif" class="displayformula" width="12" height="14" border="0" alt="" /></td><td align="center"
+ width="14"><img src="/images/equations/LogisticMap/Inline205.gif" class="displayformula"
+ width="9" height="14" border="0" alt="=" /></td><td align="left"><img src="/images/equations/LogisticMap/Inline206.gif"
+ class="displayformula" width="63" height="14" border="0" alt="3.54409..." /></td><td
+ align="right" width="10">
+<div id="eqn64" class="eqnum">
+(64)
+</div>
+</td></tr>
+</table>
+<p class="Text">
+(Sloane's <a href="http://www.research.att.com/~njas/sequences/A086181" class="Hyperlink">A086181</a>;
+Bailey 1993; Bailey and Broadhurst 2000; Borwein and Bailey 2003, pp.&nbsp;51-52).
+</p>
+<p class="Text">
+The onset of 16-cycles at <img src="/images/equations/LogisticMap/Inline207.gif" class="inlineformula" width="145" height="16" border="0" alt="r_(16)=3.564407266095..." />
+ (Sloane's <a href="http://www.research.att.com/~njas/sequences/A091517" class="Hyperlink">A091517</a>)
+ was originally found using an <a href="/IntegerRelation.html" class="Hyperlink">integer
+ relation</a> calculation which determined that <img src="/images/equations/LogisticMap/Inline208.gif"
+ class="inlineformula" width="90" height="16" border="0" alt="alpha=r_(16)(r_(16)-2)" />
+ is the root of a 120th-degree <a href="/IntegerPolynomial.html" class="Hyperlink">integer
+ polynomial</a> with coefficients that decrease monotonically from <img src="/images/equations/LogisticMap/Inline209.gif"
+ class="inlineformula" width="32" height="17" border="0" alt="257^(30)" /> to 1 (Bailey
+ and Broadhurst 2000; Borwein and Bailey 2003, pp.&nbsp;52-53). This result was subsequently
+ verified exactly using computer algebra (Borwein and Bailey 2003, p.&nbsp;53; Kotsireas
+ and Karamanos 2004), and is an <a href="/AlgebraicNumber.html" class="Hyperlink">algebraic
+ number</a> of degree 240.
+</p>
+<p class="Text">
+The following table summarizes the values <img src="/images/equations/LogisticMap/Inline210.gif" class="inlineformula" width="11" height="16" border="0" alt="r_n" /> at which the
+ <img src="/images/equations/LogisticMap/Inline211.gif" class="inlineformula" width="7"
+ height="14" border="0" alt="n" />-cycle first appears. For <img src="/images/equations/LogisticMap/Inline212.gif"
+ class="inlineformula" width="31" height="14" border="0" alt="n=1" />, 2, ..., these
+ have algebraic degrees 1, 1, 2, 2, 22, 40, 114, 12, ... (Sloane's <a href="http://www.research.att.com/~njas/sequences/A118454"
+ class="Hyperlink">A118454</a>).
+</p>
+<table align="center" class="mathworldtable">
+<tr style="Text"><td align="right"><img src="/images/equations/LogisticMap/Inline213.gif" class="inlineformula" width="7" height="14" border="0" alt="n" /></td><td align="right"><img
+ src="/images/equations/LogisticMap/Inline214.gif" class="inlineformula" width="42"
+ height="16" border="0" alt="deg(r_n)" /></td><td align="left">Sloane</td><td align="right">value</td></tr><tr
+ style="Text"><td align="right">1</td><td align="right">1</td><td align="left" /><td
+ align="right">1</td></tr><tr style="Text"><td align="right">2</td><td align="right">1</td><td
+ align="left" /><td align="right">3</td></tr><tr style="Text"><td align="right">3</td><td
+ align="right">2</td><td align="left"><a href="http://www.research.att.com/~njas/sequences/A086178"
+ class="Hyperlink">A086178</a></td><td align="right">3.82842712...</td></tr><tr style="Text"><td
+ align="right">4</td><td align="right">2</td><td align="left"><a href="http://www.research.att.com/~njas/sequences/A086180"
+ class="Hyperlink">A086180</a></td><td align="right">3.44948974...</td></tr><tr style="Text"><td
+ align="right">5</td><td align="right">22</td><td align="left"><a href="http://www.research.att.com/~njas/sequences/A118452"
+ class="Hyperlink">A118452</a></td><td align="right">3.73817237...</td></tr><tr style="Text"><td
+ align="right">6</td><td align="right">40</td><td align="left"><a href="http://www.research.att.com/~njas/sequences/A118453"
+ class="Hyperlink">A118453</a></td><td align="right">3.62655316...</td></tr><tr style="Text"><td
+ align="right">7</td><td align="right">114</td><td align="left"><a href="http://www.research.att.com/~njas/sequences/A118746"
+ class="Hyperlink">A118746</a></td><td align="right">3.70164076...</td></tr><tr style="Text"><td
+ align="right">8</td><td align="right">12</td><td align="left"><a href="http://www.research.att.com/~njas/sequences/A086181"
+ class="Hyperlink">A086181</a></td><td align="right">3.54409035...</td></tr><tr style="Text"><td
+ align="right">9</td><td align="right" /><td align="left" /><td align="right" /></tr><tr
+ style="Text"><td align="right">10</td><td align="right" /><td align="left" /><td
+ align="right" /></tr><tr style="Text"><td align="right">16</td><td align="right">240</td><td
+ align="left"><a href="http://www.research.att.com/~njas/sequences/A091517" class="Hyperlink">A091517</a></td><td
+ align="right">3.56440726...</td></tr>
+</table>
+<p class="Text">
+The algebraic orders of the values of <img src="/images/equations/LogisticMap/Inline215.gif" class="inlineformula" width="17" height="14" border="0" alt="r_(2^n)" /> (i.e., the
+ onset of the <img src="/images/equations/LogisticMap/Inline216.gif" class="inlineformula"
+ width="13" height="14" border="0" alt="2^n" />-cycle) for <img src="/images/equations/LogisticMap/Inline217.gif"
+ class="inlineformula" width="31" height="14" border="0" alt="n=1" />, 2, ... are
+ therefore given by 1, 2, 12, 240, ... (Sloane's <a href="http://www.research.att.com/~njas/sequences/A087046"
+ class="Hyperlink">A087046</a>). A table of the <a href="/MapCycle.html" class="Hyperlink">cycle</a>
+ type and value of <img src="/images/equations/LogisticMap/Inline218.gif" class="inlineformula"
+ width="17" height="14" border="0" alt="r_(2^n)" /> at which the cycle <img src="/images/equations/LogisticMap/Inline219.gif"
+ class="inlineformula" width="13" height="14" border="0" alt="2^n" /> appears is given
+ below.
+</p>
+<table align="center" class="mathworldtable">
+<tr style="Text"><td align="right"><img src="/images/equations/LogisticMap/Inline220.gif" class="inlineformula" width="7" height="14" border="0" alt="n" /></td><td align="right">cycle
+ (<img src="/images/equations/LogisticMap/Inline221.gif" class="inlineformula" width="13"
+ height="14" border="0" alt="2^n" />)</td><td align="right"><img src="/images/equations/LogisticMap/Inline222.gif"
+ class="inlineformula" width="17" height="14" border="0" alt="r_(2^n)" /></td><td
+ align="left">Sloane</td></tr><tr style="Text"><td align="right">1</td><td align="right">2</td><td
+ align="right">3</td><td align="left" /></tr><tr style="Text"><td align="right">2</td><td
+ align="right">4</td><td align="right">3.449490</td><td align="left"><a href="http://www.research.att.com/~njas/sequences/A086180"
+ class="Hyperlink">A086180</a></td></tr><tr style="Text"><td align="right">3</td><td
+ align="right">8</td><td align="right">3.544090</td><td align="left"><a href="http://www.research.att.com/~njas/sequences/A086181"
+ class="Hyperlink">A086181</a></td></tr><tr style="Text"><td align="right">4</td><td
+ align="right">16</td><td align="right">3.564407</td><td align="left"><a href="http://www.research.att.com/~njas/sequences/A091517"
+ class="Hyperlink">A091517</a></td></tr><tr style="Text"><td align="right">5</td><td
+ align="right">32</td><td align="right">3.568750</td><td align="left" /></tr><tr style="Text"><td
+ align="right">6</td><td align="right">64</td><td align="right">3.56969</td><td align="left" /></tr><tr
+ style="Text"><td align="right">7</td><td align="right">128</td><td align="right">3.56989</td><td
+ align="left" /></tr><tr style="Text"><td align="right">8</td><td align="right">256</td><td
+ align="right">3.569934</td><td align="left" /></tr><tr style="Text"><td align="right">9</td><td
+ align="right">512</td><td align="right">3.569943</td><td align="left" /></tr><tr
+ style="Text"><td align="right">10</td><td align="right">1024</td><td align="right">3.5699451</td><td
+ align="left" /></tr><tr style="Text"><td align="right">11</td><td align="right">2048</td><td
+ align="right">3.569945557</td><td align="left" /></tr><tr style="Text"><td align="right"><img
+ src="/images/equations/LogisticMap/Inline223.gif" class="inlineformula" width="12"
+ height="14" border="0" alt="infty" /></td><td align="right"><a href="/AccumulationPoint.html"
+ class="Hyperlink">accumulation point</a></td><td align="right">3.569945672</td><td
+ align="left"><a href="http://www.research.att.com/~njas/sequences/A098587" class="Hyperlink">A098587</a></td></tr>
+</table>
+<p class="Text">
+For additional values, see Rasband (1990, p.&nbsp;23). Note that the table in Tabor (1989, p.&nbsp;222) is incorrect, as is the <img src="/images/equations/LogisticMap/Inline224.gif"
+ class="inlineformula" width="31" height="14" border="0" alt="n=2" /> entry in Lauwerier
+ (1991). The period doubling <a href="/Bifurcation.html" class="Hyperlink">bifurcations</a>
+ come faster and faster (8, 16, 32, ...), then suddenly break off. Beyond a certain
+ point known as the <a href="/AccumulationPoint.html" class="Hyperlink">accumulation
+ point</a>, periodicity gives way to <a href="/Chaos.html" class="Hyperlink">chaos</a>,
+ as illustrated below. In the middle of the complexity, a window suddenly appears
+ with a regular period like 3 or 7 as a result of <a href="/ModeLocking.html" class="Hyperlink">mode
+ locking</a>. The period-3 <a href="/Bifurcation.html" class="Hyperlink">bifurcation</a>
+ occurs at <img src="/images/equations/LogisticMap/Inline225.gif" class="inlineformula"
+ width="164" height="20" border="0" alt="r=1+2sqrt(2)=3.828427..." />, and <a href="/PeriodDoubling.html"
+ class="Hyperlink">period doublings</a> then begin again with <a href="/MapCycle.html"
+ class="Hyperlink">cycles</a> of 6, 12, ... and 7, 14, 28, ..., and then once again
+ break off to <a href="/Chaos.html" class="Hyperlink">chaos</a>. However, note that
+ considerable structure can be found within this chaos (Mayoral and Robledo 2005ab).
+</p>
+<p class="Text">
+It is relatively easy to show that the logistic map is <a href="/Chaos.html" class="Hyperlink">chaotic</a> on an invariant <a href="/CantorSet.html" class="Hyperlink">Cantor set</a> for <img
+ src="/images/equations/LogisticMap/Inline226.gif" class="inlineformula" width="112"
+ height="20" border="0" alt="r&gt;2+sqrt(5) approx 4.236" /> (Devaney 1989, pp.&nbsp;31-50;
+ Gulik 1992, pp.&nbsp;112-126; Holmgren 1996, pp.&nbsp;69-85), but in fact, it is
+ also <a href="/Chaos.html" class="Hyperlink">chaotic</a> for all <img src="/images/equations/LogisticMap/Inline227.gif"
+ class="inlineformula" width="27" height="14" border="0" alt="r&gt;4" /> (Robinson
+ 1995, pp.&nbsp;33-37; Kraft 1999).
+</p>
+<p class="Text">
+The logistic map has <a href="/CorrelationExponent.html" class="Hyperlink">correlation exponent</a> <img src="/images/equations/LogisticMap/Inline228.gif" class="inlineformula"
+ width="79" height="14" border="0" alt="0.500+/-0.005" /> (Grassberger and Procaccia
+ 1983), <a href="/CapacityDimension.html" class="Hyperlink">capacity dimension</a>
+ 0.538 (Grassberger 1981), and <a href="/InformationDimension.html" class="Hyperlink">information
+ dimension</a> 0.5170976 (Grassberger and Procaccia 1983).
+</p>
+<p class="Text">
+The logistic map can be used to generate random numbers (Umeno 1998; Andrecut 1998; Gonz&aacute;les and Pino 1999, 2000; Gonz&aacute;les <i>et al. </i>2001ab; Wong <i>et
+ al. </i>2001, Trott 2004, p.&nbsp;105).
+</p>
+<!-- End Content -->
+<!-- Begin See Also -->
+<form name="SearchLinks" method="get" action="http://mathworld.wolfram.com/search/">
+<p class="CrossRefs">
+<span class="crosslinkheader">SEE ALSO:</span> <a href="/2xmod1Map.html" class="Hyperlink">2<i>x</i> mod 1 Map</a>, <a href="/Bifurcation.html" class="Hyperlink">Bifurcation</a>, <a
+ href="/FeigenbaumConstant.html" class="Hyperlink">Feigenbaum Constant</a>, <a href="/LogisticMapR=-2.html"
+ class="Hyperlink">Logistic Map--<i>r</i>=2</a>, <a href="/LogisticMapR=2.html" class="Hyperlink">Logistic
+ Map--<i>r</i>=2</a>, <a href="/LogisticMapR=4.html" class="Hyperlink">Logistic Map--<i>r</i>=4</a>,
+ <a href="/PeriodThreeTheorem.html" class="Hyperlink">Period Three Theorem</a>, <a
+ href="/QuadraticMap.html" class="Hyperlink">Quadratic Map</a>, <a href="/SilverConstant.html"
+ class="Hyperlink">Silver Constant</a>, <a href="/TentMap.html" class="Hyperlink">Tent
+ Map</a>
+</p>
+</form>
+<!-- End See Also -->
+<!-- Begin CrossURL -->
+<!-- End CrossURL -->
+<!-- Begin Contributor -->
+<!-- End Contributor -->
+<!-- Begin References -->
+<p>
+<img src="/images/entries/underline.gif" width="300" height="3" alt="" />
+</p>
+<span class="crosslinkheader">REFERENCES:</span>
+<p class="Reference">
+Bailey, D.&nbsp;H. &quot;Multiprecision Translation and Execution of Fortran Programs.&quot;
+<i>ACM Trans. Math. Software</i> <b>19</b>, 288-319, 1993.
+</p>
+<p class="Reference">
+Bailey, D.&nbsp;H.; Borwein, J.&nbsp;M.; Calkin, N.&nbsp;J.; Girgensohn, R.; Luke, D.&nbsp;R.; and Moll, V.&nbsp;H. &quot;Bifurcation Points in Chaos Theory.&quot;
+ &sect;2.3.2 in <i><a href="http://www.amazon.com/exec/obidos/ASIN/156881271X/ref=nosim/weisstein-20"
+ class="Hyperlink">Experimental Mathematics in Action.</a></i> Wellesley, MA: A K
+ Peters, pp.&nbsp;33-36, 2007.
+</p>
+<p class="Reference">
+Bailey, D.&nbsp;H.; Borwein, J.&nbsp;M.; Kapoor, V.; and Weisstein, E.&nbsp;W. &quot;Ten Problems in Experimental Mathematics.&quot; <i>Amer. Math. Monthly</i> <b>113</b>,
+ 481-509, 2006.
+</p>
+<p class="Reference">
+Bailey, D.&nbsp;H. and Broadhurst, D.&nbsp;J. &quot;Parallel Integer Relation Detection:
+Techniques and Applications.&quot; <i>Math. Comput.</i> <b>70</b>, 1719-1736, 2000.
+</p>
+<p class="Reference">
+Bechhoeffer, J. &quot;The Birth of Period 3, Revisited.&quot; <i>Math. Mag.</i> <b>69</b>,
+115-118, 1996.
+</p>
+<p class="Reference">
+Beck, C.; and Schl&ouml;gl, F. <i><a href="http://www.amazon.com/exec/obidos/ASIN/0521484510/ref=nosim/weisstein-20" class="Hyperlink">Thermodynamics of Chaotic Systems.</a></i> Cambridge, England:
+ Cambridge University Press, 1993.
+</p>
+<p class="Reference">
+Bogomolny, A. &quot;Chaos Creation (There is Order in Chaos).&quot; <a href="http://www.cut-the-knot.org/blue/chaos.shtml"
+ class="Hyperlink">http://www.cut-the-knot.org/blue/chaos.shtml</a>.
+</p>
+<p class="Reference">
+Borwein, J. and Bailey, D. &quot;Bifurcation Points in the Logistic Iteration.&quot; &sect;2.3 in <i><a href="http://www.amazon.com/exec/obidos/ASIN/1568812116/ref=nosim/weisstein-20"
+ class="Hyperlink">Mathematics by Experiment: Plausible Reasoning in the 21st Century.</a></i>
+ Wellesley, MA: A K Peters, pp.&nbsp;50-53, 2003.
+</p>
+<p class="Reference">
+Costa, U.&nbsp;M.&nbsp;S.; Lyra, M.&nbsp;L.; Plastino, A.&nbsp;R.; and Tsallis, C. &quot;Power-Law Sensitivity to Initial Conditions Within a Logistic-Like Family of
+ Maps: Fractality and Nonextensivity.&quot; <i>Phys. Rev. E</i> <b>56</b>, 245-250,
+ 1997.
+</p>
+<p class="Reference">
+Devaney, R. <i><a href="http://www.amazon.com/exec/obidos/ASIN/0201130467/ref=nosim/weisstein-20" class="Hyperlink">An Introduction to Chaotic Dynamical Systems, 2nd ed.</a></i> Redwood
+ City, CA: Addison-Wesley, 1989.
+</p>
+<p class="Reference">
+Dickau, R.&nbsp;M. &quot;Bifurcation Diagram.&quot; <a href="http://mathforum.org/advanced/robertd/bifurcation.html"
+ class="Hyperlink">http://mathforum.org/advanced/robertd/bifurcation.html</a>.
+</p>
+<p class="Reference">
+Elaydi, S.&nbsp;N. <i><a href="http://www.amazon.com/exec/obidos/ASIN/1584880023/ref=nosim/weisstein-20"
+ class="Hyperlink">Discrete Chaos.</a></i> Boca Raton, FL: Chapman &amp; Hall, 2000.
+</p>
+<p class="Reference">
+Gleick, J. <i><a href="http://www.amazon.com/exec/obidos/ASIN/0140092501/ref=nosim/weisstein-20" class="Hyperlink">Chaos: Making a New Science.</a></i> New York: Penguin Books, pp.&nbsp;69-80,
+ 1988.
+</p>
+<p class="Reference">
+Gordon, W.&nbsp;B. &quot;Period Three Trajectories of the Logistic Map.&quot; <i>Math.
+Mag.</i> <b>69</b>, 118-120, 1996.
+</p>
+<p class="Reference">
+Grassberger, P. &quot;On the Hausdorff Dimension of Fractal Attractors.&quot; <i>J.
+Stat. Phys.</i> <b>26</b>, 173-179, 1981.
+</p>
+<p class="Reference">
+Grassberger, P. and Procaccia, I. &quot;Measuring the Strangeness of Strange Attractors.&quot;
+<i>Physica D</i> <b>9</b>, 189-208, 1983.
+</p>
+<p class="Reference">
+Gulick, D. <i><a href="http://www.amazon.com/exec/obidos/ASIN/0070252033/ref=nosim/weisstein-20"
+ class="Hyperlink">Encounters with Chaos.</a></i> New York: McGraw-Hill, 1992.
+</p>
+<p class="Reference">
+Holmgren, R. <i><a href="http://www.amazon.com/exec/obidos/ASIN/0387947809/ref=nosim/weisstein-20" class="Hyperlink">A First Course in Discrete Dynamical Systems, 2nd ed.</a></i> New
+ York: Springer-Verlag, 1996.
+</p>
+<p class="Reference">
+<img src="/images/entries/mathematica.gif" height="16" width="16" align="bottom" border="0" alt="" /> Jaffe, S. &quot;The Logistic Equation: Computable Chaos.&quot;
+ <a href="http://library.wolfram.com/infocenter/MathSource/579/" class="Hyperlink">http://library.wolfram.com/infocenter/MathSource/579/</a>.
+</p>
+<p class="Reference">
+Kotsireas, I.&nbsp;S. and Karamanos, K. &quot;Exact Computation of the Bifurcation Point <img src="/images/equations/LogisticMap/Inline229.gif" class="inlineformula"
+ width="13" height="14" border="0" alt="b_4" /> of the Logistic Map and the Bailey-Broadhurst
+ Conjectures.&quot; <i>Internat. J. Bifurcation and Chaos</i> <b>14</b>, 2417-2423,
+ 2004. <a href="http://www.lacim.uqam.ca/~plouffe/OEIS/archive_in_pdf/costas-cecm.pdf"
+ class="Hyperlink">http://www.lacim.uqam.ca/~plouffe/OEIS/archive_in_pdf/costas-cecm.pdf</a>
+</p>
+<p class="Reference">
+Kraft, R.&nbsp;L. &quot;Chaos, Cantor Sets, and Hyperbolicity for the Logistic Maps.&quot;
+<i>Amer. Math. Monthly</i> <b>106</b>, 400-408, 1999.
+</p>
+<p class="Reference">
+Latora, V.; Rapisarda, A.; Tsallis, C.; and Baranger, M. &quot;The Rate of Entropy
+Increase at the Edge of Chaos.&quot; <i>Phys. Lett. A</i> <b>273</b>, 97, 2000.
+</p>
+<p class="Reference">
+Lauwerier, H. <i><a href="http://www.amazon.com/exec/obidos/ASIN/0691024456/ref=nosim/weisstein-20" class="Hyperlink">Fractals: Endlessly Repeated Geometrical Figures.</a></i> Princeton,
+ NJ: Princeton University Press, pp.&nbsp;119-122, 1991.
+</p>
+<p class="Reference">
+MathPages. &quot;Closed Forms for the Logistic Map.&quot; <a href="http://www.mathpages.com/home/kmath188.htm"
+ class="Hyperlink">http://www.mathpages.com/home/kmath188.htm</a>.
+</p>
+<p class="Reference">
+May, R.&nbsp;M. &quot;Simple Mathematical Models with Very Complicated Dynamics.&quot;
+<i>Nature</i> <b>261</b>, 459-467, 1976.
+</p>
+<p class="Reference">
+Mayoral, E. and Robledo, A. &quot;A Recent Appreciation of the Singular Dynamics at the Edge of Chaos.&quot; Jan.&nbsp;17, 2005a. <a href="http://arxiv.org/abs/cond-mat/0501398/"
+ class="Hyperlink">http://arxiv.org/abs/cond-mat/0501398/</a>.
+</p>
+<p class="Reference">
+Mayoral, E. and Robledo, A. &quot;Tsallis' <img src="/images/equations/LogisticMap/Inline230.gif" class="inlineformula" width="7" height="14" border="0" alt="q" /> Index and Mori's
+ <img src="/images/equations/LogisticMap/Inline231.gif" class="inlineformula" width="7"
+ height="14" border="0" alt="q" /> Phase Transitions at Edge of Chaos.&quot; <i>Phys.
+ Rev. E</i> <b>72</b>, 026209, 2005b.
+</p>
+<p class="Reference">
+Packel, E. <i><a href="http://www.amazon.com/exec/obidos/ASIN/0963167847/ref=nosim/weisstein-20" class="Hyperlink"><i>Mathematica</i> for Mathematics Teachers.</a></i> Inst. of Computation,
+ 1996.
+</p>
+<p class="Reference">
+Pearl, R. Ch.&nbsp;18 in <i><a href="http://www.amazon.com/exec/obidos/ASIN/0405104146/ref=nosim/weisstein-20"
+ class="Hyperlink">The Biology of Population Growth.</a></i> New York: Knopf, 1978.
+</p>
+<p class="Reference">
+Peitgen, H.-O.; J&uuml;rgens, H.; and Saupe, D. <i><a href="http://www.amazon.com/exec/obidos/ASIN/0387979034/ref=nosim/weisstein-20" class="Hyperlink">Chaos and Fractals: New Frontiers of Science.</a></i> New York:
+ Springer-Verlag, pp.&nbsp;585-653, 1992.
+</p>
+<p class="Reference">
+Quetelet, A. and Verhulst, P.&nbsp;F. <i>Annuaire de l'Acad&eacute;mie royale des
+sciences de Belgique</i> <b>16</b>, 97-124, 1850.
+</p>
+<p class="Reference">
+Ramasubramanian, K. and Sriram, M.&nbsp;S. &quot;A Comparative Study of Computation of Lyapunov Spectra with Different Algorithms.&quot; 17 Sep 1999. <a href="http://arxiv.org/abs/chao-dyn/9909029/"
+ class="Hyperlink">http://arxiv.org/abs/chao-dyn/9909029/</a>.
+</p>
+<p class="Reference">
+Rasband, S.&nbsp;N. <i><a href="http://www.amazon.com/exec/obidos/ASIN/0471184349/ref=nosim/weisstein-20" class="Hyperlink">Chaotic Dynamics of Nonlinear Systems.</a></i> New York: Wiley,
+ p.&nbsp;23, 1990.
+</p>
+<p class="Reference">
+Robinson, C. <i><a href="http://www.amazon.com/exec/obidos/ASIN/0849384958/ref=nosim/weisstein-20" class="Hyperlink">Stability, Symbolic Dynamics, and Chaos.</a></i> Boca Raton, FL:
+ CRC Press, 1995.
+</p>
+<p class="Reference">
+Russell, D.&nbsp;A.; Hanson, J.&nbsp;D.; and Ott, E. &quot;Dimension of Strange Attractors.&quot;
+<i>Phys. Rev. Let.</i> <b>45</b>, 1175-1178, 1980.
+</p>
+<p class="Reference">
+Saha, P. and Strogatz, S.&nbsp;H. &quot;The Birth of Period Three.&quot; <i>Math.
+Mag.</i> <b>68</b>, 42-47, 1995.
+</p>
+<p class="Reference">
+Sloane, N.&nbsp;J.&nbsp;A. Sequences  <a href="http://www.research.att.com/~njas/sequences/A086178" class="Hyperlink">A086178</a>, <a href="http://www.research.att.com/~njas/sequences/A086179"
+ class="Hyperlink">A086179</a>, <a href="http://www.research.att.com/~njas/sequences/A086180"
+ class="Hyperlink">A086180</a>, <a href="http://www.research.att.com/~njas/sequences/A086181"
+ class="Hyperlink">A086181</a>, <a href="http://www.research.att.com/~njas/sequences/A087046"
+ class="Hyperlink">A087046</a>, <a href="http://www.research.att.com/~njas/sequences/A091517"
+ class="Hyperlink">A091517</a>, <a href="http://www.research.att.com/~njas/sequences/A098587"
+ class="Hyperlink">A098587</a>, <a href="http://www.research.att.com/~njas/sequences/A118452"
+ class="Hyperlink">A118452</a>, <a href="http://www.research.att.com/~njas/sequences/A118453"
+ class="Hyperlink">A118453</a>, <a href="http://www.research.att.com/~njas/sequences/A118454"
+ class="Hyperlink">A118454</a>, and <a href="http://www.research.att.com/~njas/sequences/A118746"
+ class="Hyperlink">A118746</a> in &quot;The On-Line Encyclopedia of Integer Sequences.&quot;
+</p>
+<p class="Reference">
+Strogatz, S.&nbsp;H. <i><a href="http://www.amazon.com/exec/obidos/ASIN/0201543443/ref=nosim/weisstein-20" class="Hyperlink">Nonlinear Dynamics and Chaos.</a></i> Reading, MA: Addison-Wesley,
+ 1994.
+</p>
+<p class="Reference">
+Tabor, M. <i><a href="http://www.amazon.com/exec/obidos/ASIN/0471827282/ref=nosim/weisstein-20" class="Hyperlink">Chaos and Integrability in Nonlinear Dynamics: An Introduction.</a></i>
+ New York: Wiley, 1989.
+</p>
+<p class="Reference">
+Tsallis, C.; Plastino, A.&nbsp;R.; and Zheng, W.-M. &quot;Power-Law Sensitivity to Initial Conditions--New Entropic Representation.&quot; <i>Chaos, Solitons &amp; Fractals</i> <b>8</b>,
+ 885-891, 1997.
+</p>
+<p class="Reference">
+Trott, M. <i><a href="http://www.amazon.com/exec/obidos/ASIN/0387942823/ref=nosim/weisstein-20" class="Hyperlink">The <i>Mathematica</i> GuideBook for Programming.</a></i> New York:
+ Springer-Verlag, pp.&nbsp;24-25, 2004. <a href="http://www.mathematicaguidebooks.org/"
+ class="Hyperlink">http://www.mathematicaguidebooks.org/</a>.
+</p>
+<p class="Reference">
+Wagon, S. &quot;The Dynamics of the Quadratic Map.&quot; &sect;4.4 in <i><a href="http://www.amazon.com/exec/obidos/ASIN/071672202X/ref=nosim/weisstein-20" class="Hyperlink"><i>Mathematica</i> in Action.</a></i> New York: W.&nbsp;H. Freeman,
+ pp.&nbsp;117-140, 1991.
+</p>
+<p class="Reference">
+Wolfram Research, Inc. &quot;Logistic Map.&quot; <a href="http://documents.wolfram.com/mathematica/Demos/SoundGallery/LogisticMap.html"
+ class="Hyperlink">http://documents.wolfram.com/mathematica/Demos/SoundGallery/LogisticMap.html</a>.
+</p>
+<p class="Reference">
+Wolfram, S. <i><a href="http://www.amazon.com/exec/obidos/ASIN/1579550088/ref=nosim/weisstein-20" class="Hyperlink">A New Kind of Science.</a></i> Champaign, IL: Wolfram Media, pp.&nbsp;<a
+ href="http://www.wolframscience.com/nksonline/page-918c-text" class="Hyperlink">918</a>-921
+ and <a href="http://www.wolframscience.com/nksonline/page-1098a-text" class="Hyperlink">1098</a>,
+ 2002.
+</p>
+<!-- End References -->
+<!-- Begin CiteAs -->
+<div>
+<img src="/images/entries/underline.gif" width="300" height="3" alt="" /><br /><br /><br /><span
+ class="crosslinkheader">CITE THIS AS:</span><br />
+<p class="citation">
+<a href="/about/author.html">Weisstein, Eric W.</a> &quot;Logistic Map.&quot; From
+<a href="/"><i>MathWorld</i></a>--A Wolfram Web Resource. <a href="http://mathworld.wolfram.com/LogisticMap.html">http://mathworld.wolfram.com/LogisticMap.html</a>
+</p>
+</div>
+<!-- End CiteAs -->
+<!-- End Total Content -->
+</td></tr>
+<!-- End Body -->
+</table>
+</div>
+</div>
+<div class="bottomshadow">
+<img src="/images/spacer.gif" width="1" height="17" alt="" />
+</div>
+<p class="footer">
+<a href="/contact/"><img src="/images/topbar/send.gif" width="16" height="17" border="0" alt="Send" title="Send" />Contact the <i>MathWorld</i> Team</a><br />
+&copy; 1999-2009 <a href="http://www.wolfram.com/" target="_blank">Wolfram Research, Inc.</a> | <a href="/about/terms.html">Terms of Use</a>
+</p>
+
+</td>
+<td valign="top">
+<div class="demonstrations">
+<table border="0" width="185">
+<tr valign="top"><td>
+<div class="demoheader">
+<span class="demoinsidetitle">Logistic Map</span><span class="demoinsidetext">&nbsp;in&nbsp;the&nbsp;</span>
+<div>
+<img src="/images/sidebar/demonstrations/demo_logo.jpg" border="0" width="203" height="20"
+ alt="New! Interactive mathematics--The Wolfram Demonstrations Project" title="New! Interactive mathematics--The Wolfram Demonstrations Project" />
+</div>
+</div>
+</td></tr>
+</table>
+<div class="demolowerhalf">
+<div class="leftmargin">
+<table border="0" width="185">
+<tr valign="top"><td class="demorowleftTop"><a href="http://demonstrations.wolfram.com/IteratesOfTheLogisticMapIn3D/" class="demolink" target="_blank"><img src="/images/demonstrations/IteratesOfTheLogisticMapIn3D.jpg"
+ width="44" height="46" border="0" alt="Iterates of the Logistic Map in 3D" /><img
+ src="/images/sidebar/play.gif" class="play" border="0" alt="Iterates of the Logistic Map in 3D" /></a></td><td
+ valign="middle" class="demorowrightTop"><span class="demowords"><a href="http://demonstrations.wolfram.com/IteratesOfTheLogisticMapIn3D/"
+ class="othersite" target="_blank">Iterates of the Logistic Map in 3D</a></span></td></tr><tr
+ valign="top"><td class="demorowleftMiddle"><a href="http://demonstrations.wolfram.com/OrbitDiagramOfTheLogisticMap/"
+ class="demolink" target="_blank"><img src="/images/demonstrations/OrbitDiagramOfTheLogisticMap.jpg"
+ width="44" height="51" border="0" alt="Orbit Diagram of the Logistic Map" /><img
+ src="/images/sidebar/play.gif" class="play" border="0" alt="Orbit Diagram of the Logistic Map" /></a></td><td
+ valign="middle" class="demorowrightMiddle"><span class="demowords"><a href="http://demonstrations.wolfram.com/OrbitDiagramOfTheLogisticMap/"
+ class="othersite" target="_blank">Orbit Diagram of the Logistic Map</a></span></td></tr><tr
+ valign="top"><td class="demorowleftMiddle"><a href="http://demonstrations.wolfram.com/ASpecialParameterValueForTheLogisticMap/"
+ class="demolink" target="_blank"><img src="/images/demonstrations/ASpecialParameterValueForTheLogisticMap.jpg"
+ width="44" height="52" border="0" alt="A Special Parameter Value for the Logistic Map" /><img
+ src="/images/sidebar/play.gif" class="play" border="0" alt="A Special Parameter Value for the Logistic Map" /></a></td><td
+ valign="middle" class="demorowrightMiddle"><span class="demowords"><a href="http://demonstrations.wolfram.com/ASpecialParameterValueForTheLogisticMap/"
+ class="othersite" target="_blank">A Special Parameter Value for the Logistic Map</a></span></td></tr><tr
+ valign="top"><td class="demorowleftBottom"><a href="http://demonstrations.wolfram.com/LogisticMapOnsetOfChaos/"
+ class="demolink" target="_blank"><img src="/images/demonstrations/LogisticMapOnsetOfChaos.jpg"
+ width="44" height="46" border="0" alt="Logistic Map: Onset of Chaos" /><img src="/images/sidebar/play.gif"
+ class="play" border="0" alt="Logistic Map: Onset of Chaos" /></a></td><td valign="middle"
+ class="demorowrightBottom"><span class="demowords"><a href="http://demonstrations.wolfram.com/LogisticMapOnsetOfChaos/"
+ class="othersite" target="_blank">Logistic Map: Onset of Chaos</a></span></td></tr>
+</table>
+</div>
+</div>
+</div>
+<div style="margin-left:30px; margin-right:10px; margin-top:20px;">
+
+<a href="http://www.wolfram.com/products/mathematica/" target="_blank"><img src="/images/sidebar/mathematica7/mathematica.gif" width="211" height="308" border="0" alt="Wolfram Mathematica 7" title="Wolfram Mathematica 7" /></a><div>
+<!-- The code below handles :hover and :active for IE6 and below -->
+<!--[if lte IE 6]>
+<style type="text/css">
+div.redwebmenu {
+   behavior: url(/scripts/csshover.htc);
+   }
+ </style>
+<![endif]-->
+
+<div style="position:absolute;margin-left:-3px;margin-right:30px; padding-top:6px;">
+<table>
+<tr>
+<td>
+<div class="redwebmenu">
+	<div class="redwebmenuheader"><a class="aredmenuheader" href="http://www.wolfram.com/webresources.html">&nbsp;Other Wolfram Web Resources &raquo;</a>
+		<div class="redwebsubmenu">
+			<div class="redwebitem"><a href="http://www.wolfram.com/" target="_blank">Wolfram Research</a></div>
+			<div class="redwebitem"><a href="http://www.wolfram.com/products/mathematica/" target="_blank"><i>Mathematica</i> Home Page</a></div>
+			<div class="redwebitem"><a href="http://reference.wolfram.com/" target="_blank"><i>Mathematica</i> Documentation Center</a></div>
+			<div class="redwebitem"><a href="http://demonstrations.wolfram.com/" target="_blank">Wolfram Demonstrations Project</a></div>
+			<div class="redwebitem"><a href="http://integrals.wolfram.com/" target="_blank">Online Integrator</a></div>
+			<div class="redwebitem"><a href="http://functions.wolfram.com/" target="_blank">Functions Site</a></div>
+			<div class="redwebitem"><a href="http://tones.wolfram.com/" target="_blank">Wolfram Tones</a></div>
+			<div class="redwebitem"><a href="http://www.wolframscience.com/" target="_blank">Wolfram Science</a></div>
+			<div class="redwebitem"><a href="http://blog.wolfram.com/" target="_blank">Wolfram Blog</a></div>
+			<div class="redwebitem"><a href="http://www.wolfram.com/webresources.html" target="_blank">more&hellip;</a></div>
+		</div>
+	</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>
